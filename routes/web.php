@@ -8,8 +8,8 @@ Route::get('/', function () {
 
 Route::get('/about', function() {
     return "This is a About page";
-});
+})->name('my.about');
 
 Route::get('/user/{id}/{slug}', function($id, $slug) {
     return "Hello user " . $id. '-'.$slug;
-});
+})->name('user');
