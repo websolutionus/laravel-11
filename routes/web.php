@@ -8,24 +8,32 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/about', function() {
-    return "This is a About page";
-})->name('my.about');
 
-Route::get('/user/{id}/{slug}', function($id, $slug) {
-    return "Hello user " . $id. '-'.$slug;
-})->name('user');
+// Route Methods
+/**
+ * 1. Get - if we wanat to get data
+ * 2. POST - submit/store data
+ * 3. PUT - if update
+ * 4. PATCH - if udate
+ * 5. DELETE - when we delete something
+ */
 
-Route::group(['prefix' => 'blog', 'as' => 'blog.'], function() {
-    Route::get('/create', function() {
-        return "Blog Create Page";
-    })->name('create');
+Route::get('get-route', function() {
+    return;
+});
 
-    Route::get('/edit', function() {
-        return "Blog Edit Page";
-    })->name('edit');
+Route::post('post-route', function() {
+    return;
+});
 
-    Route::get('/show', function() {
-        return "Blog Show Page";
-    })->name('show');
+Route::put('put-route', function() {
+    return;
+});
+
+Route::patch('patch-route', function() {
+    return;
+});
+
+Route::delete('delete-route', function() {
+    return;
 });
