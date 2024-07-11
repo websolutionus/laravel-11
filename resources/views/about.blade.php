@@ -16,3 +16,11 @@
     </div>
   </section>
 @endsection
+
+@push('scripts')
+    <script>
+    $(document).ready(function() {
+      alert("This script is for About page!");
+    })
+  </script>
+@endpush
