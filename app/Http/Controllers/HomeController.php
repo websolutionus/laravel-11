@@ -10,8 +10,10 @@ class HomeController extends Controller
     function index()
     {
 
-        $blogs = DB::table('blogs')->pluck('title', 'id')->toArray();
-        dd($blogs);
+        $products = DB::table('products')->avg('price');
+
+        dd($products);
+        
 
         return view('welcome');
     }
