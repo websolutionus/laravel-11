@@ -10,20 +10,25 @@ class HomeController extends Controller
     function index()
     {
 
-        DB::table('users')->insert(
-            [
-                [
-                    'name' => 'Artik123',
-                    'email' => 'artik123@gmail.com',
-                    'password' => '1234'
-                ], 
-                [
-                    'name' => 'Jhohan',
-                    'email' => 'johan@gmail.com',
-                    'password' => '1234'
-                ]
-            ]
-        );
+        // Insert new data
+        // DB::table('users')->insert(
+        //     [
+        //         [
+        //             'name' => 'Artik123',
+        //             'email' => 'artik123@gmail.com',
+        //             'password' => '1234'
+        //         ], 
+        //         [
+        //             'name' => 'Jhohan',
+        //             'email' => 'johan@gmail.com',
+        //             'password' => '1234'
+        //         ]
+        //     ]
+        // );
+
+        // Get data from db
+        $users = DB::table('users')->where('id', '>', 2)->get();
+        return $users;
 
         return view('welcome');
     }
