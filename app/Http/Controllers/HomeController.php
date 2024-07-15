@@ -30,10 +30,14 @@ class HomeController extends Controller
         // $users = DB::table('users')->where('id', '>', 2)->get();
         // return $users;
 
-        DB::table('users')->where('id', 6)->update([
-            'email' => 'test@gmail.com',
-            'name' => 'test user'
-        ]);
+        // Update row from db
+        // DB::table('users')->where('id', 6)->update([
+        //     'email' => 'test@gmail.com',
+        //     'name' => 'test user'
+        // ]);
+
+        // delete row from db
+        DB::table('users')->where('id', '>', 1)->delete();
         
 
         return view('welcome');
