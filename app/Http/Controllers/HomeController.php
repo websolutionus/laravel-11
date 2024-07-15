@@ -27,8 +27,14 @@ class HomeController extends Controller
         // );
 
         // Get data from db
-        $users = DB::table('users')->where('id', '>', 2)->get();
-        return $users;
+        // $users = DB::table('users')->where('id', '>', 2)->get();
+        // return $users;
+
+        DB::table('users')->where('id', 6)->update([
+            'email' => 'test@gmail.com',
+            'name' => 'test user'
+        ]);
+        
 
         return view('welcome');
     }
