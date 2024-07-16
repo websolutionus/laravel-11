@@ -24,8 +24,14 @@ class HomeController extends Controller
         // $product->save();
 
         // read data from db
-        $user = User::find(7);
-        dd($user);
+        // $user = User::find(7);
+        // dd($user);
+
+        // update data
+        $user = User::find(1);
+        $user->name = 'Test user';
+        $user->save();
+        // dd($user);
 
         return view('welcome');
     }
