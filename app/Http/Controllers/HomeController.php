@@ -28,9 +28,14 @@ class HomeController extends Controller
         // dd($user);
 
         // update data
-        $user = User::find(1);
-        $user->name = 'Test user';
-        $user->save();
+        // $user = User::find(1);
+        // $user->name = 'Test user';
+        // $user->save();
+
+        // delete data
+        $user = User::findOrFail(8);
+        $user->delete();
+
         // dd($user);
 
         return view('welcome');
