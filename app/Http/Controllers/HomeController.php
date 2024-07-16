@@ -11,32 +11,26 @@ class HomeController extends Controller
 {
     function index()
     {
-        // Create data in db
-        // $user = new User();
-        // $user->name = 'Artik';
-        // $user->email = 'artik@gmail.com';
-        // $user->password = '12345';
-        // $user->save();
-        // $product = new Product();
-        // $product->name = 'Car';
-        // $product->description = 'this is a test description';
-        // $product->price = 100;
-        // $product->save();
+        User::create([
+            'name' => 'test user 123',
+            'email' => 'test123@gmail.com',
+            'password' => '12312',
+            'remember_token' => 'test123124'
+        ]);
 
-        // read data from db
-        // $user = User::find(7);
-        // dd($user);
+        User::insert([
+            [
+                'name' => 'test user 2',
+                'email' => 'testuser2@gmail.com',
+                'password' => '1234'
+            ],
+            [
+                'name' => 'test user 3',
+                'email' => 'testuser3@gmail.com',
+                'password' => '1234'
+            ],
+        ]);
 
-        // update data
-        // $user = User::find(1);
-        // $user->name = 'Test user';
-        // $user->save();
-
-        // delete data
-        $user = User::findOrFail(8);
-        $user->delete();
-
-        // dd($user);
 
         return view('welcome');
     }
