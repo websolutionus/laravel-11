@@ -13,8 +13,9 @@ class HomeController extends Controller
 {
     function index()
     {
-        $blogs = MyBlog::Active()->get();
-        dd($blogs);
+        // Product::find(1)->delete();
+        $products = Product::onlyTrashed()->get();
+        dd($products);
 
         return view('welcome');
     }
