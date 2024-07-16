@@ -17,11 +17,15 @@ class HomeController extends Controller
         // $user->email = 'artik@gmail.com';
         // $user->password = '12345';
         // $user->save();
-        $product = new Product();
-        $product->name = 'Car';
-        $product->description = 'this is a test description';
-        $product->price = 100;
-        $product->save();
+        // $product = new Product();
+        // $product->name = 'Car';
+        // $product->description = 'this is a test description';
+        // $product->price = 100;
+        // $product->save();
+
+        // read data from db
+        $user = User::find(7);
+        dd($user);
 
         return view('welcome');
     }
