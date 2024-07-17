@@ -13,13 +13,6 @@ class HomeController extends Controller
 {
     function index()
     {
-        // Product::find(1)->delete();
-        // $products = Product::find(1);
-
-        $products = Product::withTrashed()->find(1);
-        $products->forceDelete();
-        dd($products);
-
         return view('welcome');
     }
 
