@@ -10,7 +10,7 @@ class ContactController extends Controller
         return view('contact');
     }
 
-    function contactSubmit() {
-        dd("working");
+    function contactSubmit(Request $request) {
+        echo $request->name;
     }
 }
