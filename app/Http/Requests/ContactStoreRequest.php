@@ -15,7 +15,9 @@ class ContactStoreRequest extends FormRequest
     {
         return [
             'name' => ['required', 'max:20', 'min:2'],
-            'email' => ['required', 'email']
+            'email' => ['required', 'email'],
+            'subject' => ['nullable', 'max:255'],
+            'message' => ['required', 'max:5000']
         ];
     }
 
