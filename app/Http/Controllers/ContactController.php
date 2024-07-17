@@ -9,4 +9,8 @@ class ContactController extends Controller
     function index() {
         return view('contact');
     }
+
+    function contactSubmit() {
+        dd("working");
+    }
 }
