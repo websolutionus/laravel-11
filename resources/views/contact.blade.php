@@ -4,6 +4,15 @@
     <section>
         <div class="row justify-content-center">
             <div class="col-md-6">
+
+                @if($errors->any())
+                   <div class="mt-4">
+                    @foreach($errors->all() as $error)
+                    <div class="alert alert-danger">{{ $error }}</div>
+                    @endforeach
+                   </div>
+                @endif
+
                 <div class="card mt-5 mb-5">
                  <div class="card-body">
                      <form action="{{ route('contact.submit') }}"  method="POST">
@@ -22,7 +31,7 @@
                         </div>
                         <div class="mb-3">
                             <label for="" class="form-label">Message</label>
-                            <textarea name="" class="form-control" name="message"></textarea>
+                            <textarea class="form-control" name="message"></textarea>
                         </div>
                          
                          
