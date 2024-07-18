@@ -10,7 +10,7 @@ use App\Models\MyBlog;
 use Illuminate\Support\Facades\Route;
 use Symfony\Component\Finder\Iterator\FilecontentFilterIterator;
 
-Route::get('/', [HomeController::class, 'index']);
+Route::get('/', [HomeController::class, 'index'])->name('home');
 
 Route::get('contact', [ContactController::class, 'index'])->name('contact.index');
 Route::post('contact', [ContactController::class, 'contactSubmit'])->name('contact.submit');

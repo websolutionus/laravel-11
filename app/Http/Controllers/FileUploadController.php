@@ -21,6 +21,10 @@ class FileUploadController extends Controller
 
     function store(Request $request) {
 
+        $request->validate([
+            'file' => ['required', 'image']
+        ]);
+
         // $file = Storage::disk('local')->put('/', $request->file('file'));
         // $file = $request->file('file')->store('/', 'local');
 
@@ -35,7 +39,7 @@ class FileUploadController extends Controller
         $fileStore->file_path = '/uploads/'.$path;
         $fileStore->save();
 
-        dd('stored');
+        return redirect();
     }
 
     function download() {
