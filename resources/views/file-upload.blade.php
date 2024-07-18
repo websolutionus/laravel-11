@@ -18,7 +18,7 @@
                  <table>
                     <tbody>
                         @foreach($files as $file)
-                        <td><img style="width:100px" src="/storage/{{ $file->file_path }}" alt=""></td>
+                        <td><img style="width:100px" src="{{ asset($file->file_path) }}" alt=""></td>
                         @endforeach
                     </tbody>
                  </table>

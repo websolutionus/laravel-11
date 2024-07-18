@@ -17,10 +17,10 @@ class FileUploadController extends Controller
 
         // $file = Storage::disk('local')->put('/', $request->file('file'));
         // $file = $request->file('file')->store('/', 'local');
-        $file = $request->file('file')->store('/', 'public');
+        $file = $request->file('file')->store('/', 'dir_public');
 
         $fileStore = new File();
-        $fileStore->file_path = $file;
+        $fileStore->file_path = '/uploads/'.$file;
         $fileStore->save();
 
         dd('stored');
