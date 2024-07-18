@@ -6,10 +6,15 @@ use App\Models\File;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use Str;
+use Illuminate\Support\Facades\File as HandleFile;
 
 class FileUploadController extends Controller
 {
     function index() {
+        $file = File::find(12);
+        HandleFile::delete(storage_path($file->file_path));
+        $file->delete();
+
         $files = File::all();
         return view('file-upload', ['files' => $files]);
     }
