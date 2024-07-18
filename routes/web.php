@@ -17,3 +17,4 @@ Route::get('contact', [ContactController::class, 'index'])->name('contact.index'
 Route::post('contact', [ContactController::class, 'contactSubmit'])->name('contact.submit');
 
 Route::get('/file-upload', [FileUploadController::class, 'index'])->name('file.upload');
+Route::post('/file-upload', [FileUploadController::class, 'store'])->name('file.store');

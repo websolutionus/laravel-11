@@ -5,7 +5,7 @@
         <div class="row justify-content-center">
             <div class="col-md-6">
                  <div class="card-body mt-5 mb-5">
-                     <form action=""  method="POST">
+                     <form action="{{ route('file.store') }}"  method="POST" enctype="multipart/form-data">
                         @csrf
                          <div class="mb-3">
                              <label for="" class="form-label">File</label>
