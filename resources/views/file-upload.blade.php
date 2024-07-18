@@ -15,6 +15,23 @@
                          <button type="submit" class="btn btn-primary">Submit</button>
                      </form>
                  </div>
+                 <table>
+                    <tbody>
+                        @foreach($files as $file)
+                        <td><img style="width:100px" src="/storage/{{ $file->file_path }}" alt=""></td>
+                        @endforeach
+                    </tbody>
+                 </table>
+                 <hr>
+                 <table>
+                    <tbody>
+                        {{-- @foreach($files as $file) --}}
+                        <td>
+                            <a href="{{ route('file.download') }}">Download File</a>
+                        </td>
+                        {{-- @endforeach --}}
+                    </tbody>
+                 </table>
                 </div>
              </div>
         </div>
