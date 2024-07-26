@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\CustomerStoreRequest;
 use App\Models\Customer;
+use Faker\Core\File as CoreFile;
 use Illuminate\Http\Request;
 use File;
 
@@ -104,6 +105,10 @@ class CustomerController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $customer = Customer::findOrFail($id);
+        File::delete(public_path($customer->image));
+        $customer->delete();
+
+        return redirect()->route('customers.index');
     }
 }
