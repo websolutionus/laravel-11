@@ -21,7 +21,7 @@ class CustomerController extends Controller
             ->orWhere('last_name', 'LIKE', "%$request->search%")
             ->orWhere('phone', 'LIKE', "%$request->search%")
             ->orWhere('email', 'LIKE', "%$request->search%");
-        })->get();
+        })->orderBy('id', $request->has('order') && $request->order == 'asc' ? 'ASC' : 'DESC')->get();
         return view('customer.index', compact('customers'));
     }
 
