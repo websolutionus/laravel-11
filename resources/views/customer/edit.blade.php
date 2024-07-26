@@ -13,7 +13,7 @@
                 <div class="card-header">
                     <div class="row">
                         <div class="col-md-2">
-                            <a href="{{ route('home') }}" class="btn" style="background-color: #4643d3; color: white;"><i
+                            <a href="{{ route('customers.index') }}" class="btn" style="background-color: #4643d3; color: white;"><i
                                     class="fas fa-chevron-left"></i> Back</a>
                         </div>
 
@@ -21,10 +21,12 @@
 
                 </div>
                 <div class="card-body">
-                    <form action="{{ route('customers.store') }}" method="POST" enctype="multipart/form-data">
+                    <form action="{{ route('customers.update', $customer->id) }}" method="POST" enctype="multipart/form-data">
                         @csrf
+                        @method('PUT')
                         <div class="row">
                             <div class="col-md-12 mb-3">
+                                <img style="width:100px" src="{{ asset($customer->image) }}" alt="">
                                 <div class="form-group">
                                     <label for="">Image</label>
                                     <input type="file" class="form-control" name="image">
