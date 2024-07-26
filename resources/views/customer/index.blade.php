@@ -13,10 +13,10 @@
                                 Customer</a>
                         </div>
                         <div class="col-md-8">
-                            <form action="">
+                            <form action="{{ route('customers.index') }}" method="GET">
                                 <div class="input-group mb-3">
                                     <input type="text" class="form-control" placeholder="Search anything..."
-                                        aria-describedby="button-addon2">
+                                        aria-describedby="button-addon2" name="search" value="{{ request()->search }}">
                                     <button class="btn btn-outline-secondary" type="submit"
                                         id="button-addon2">Search</button>
                                 </div>
