@@ -57,7 +57,8 @@ class CustomerController extends Controller
      */
     public function show(string $id)
     {
-        //
+        $customer = Customer::findOrFail($id);
+        return view('customer.show', compact('customer'));
     }
 
     /**
@@ -79,7 +80,7 @@ class CustomerController extends Controller
         if($request->hasFile('image')){
             // delete prev image
             File::delete(public_path($customer->image));
-            
+
             // handle file
             $image = $request->file('image');
             $fileName = $image->store('', 'public');
