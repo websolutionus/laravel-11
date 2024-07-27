@@ -8,9 +8,14 @@ Route::get('/', function () {
 
 
 Route::get('/join', function() {
+    // $usersWithOrders = \DB::table('users')
+    //     ->join('orders', 'users.id', '=', 'orders.user_id')
+    //     ->select('users.*', 'orders.*')
+    //     ->get();
+
     $usersWithOrders = \DB::table('users')
-        ->join('orders', 'users.id', '=', 'orders.user_id')
-        ->select('users.*', 'orders.*')
+        ->leftJoin('orders', 'users.id', '=', 'orders.user_id')
+        ->select('users.name', 'orders.product_name')
         ->get();
 
     dd($usersWithOrders);
