@@ -1,7 +1,9 @@
 <?php
 
 use App\Models\Address;
+use App\Models\Country;
 use App\Models\Post;
+use App\Models\State;
 use App\Models\Tag;
 use App\Models\User;
 use Illuminate\Support\Facades\Route;
@@ -42,4 +44,22 @@ Route::get('/posts', function() {
 Route::get('tags', function() {
     $tags = Tag::all();
     return view('tag', compact('tags'));
+});
+
+
+Route::get('location', function() {
+    // $country = new Country(['name' => 'United States']);
+    // $country->save();
+
+    // $state = new State(['name' => 'Califonia']);
+    // $country->states()->save($state);
+
+    // $state->cities()->createMany([
+    //     ['name' => 'Los Angeles'],
+    //     ['name' => 'San Francisco']
+    // ]);
+
+    $country = Country::first();
+
+    return view('location', compact('country'));
 });
