@@ -8,12 +8,12 @@
 </head>
 <body>
     <div>
-        @foreach($users as $user)
-        <h4>{{ $user->name }}</h4>
-        <p>Post Count: {{ $user->posts->count() }}</p>
+       @foreach($posts as $post) 
+        <h4>{{ $post->name }}</h4>
+        <p>Author: {{ $post->user->name }}</p>
         <hr>
-        @endforeach
+       @endforeach
     </div>
-
+    
 </body>
 </html>
