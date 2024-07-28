@@ -7,10 +7,19 @@
     <title>Document</title>
 </head>
 <body>
-    <div>
+    {{-- <div>
         @foreach($users as $user)
         <h4>{{ $user->name }}</h4>
         <p>Address:{{ $user->address->country }}</p>
+        <hr>
+        @endforeach
+    </div> --}}
+    <br>
+    <hr>
+    <div>
+        @foreach($address as $address)
+        <h4>{{ $address->country }}</h4>
+        <p>User: {{ $address->user->name }} - {{ $address->user->email }}</p>
         <hr>
         @endforeach
     </div>
