@@ -8,13 +8,13 @@
 </head>
 <body>
     <div>
-       @foreach($posts as $post) 
-        <h4>{{ $post->name }}</h4>
-        <p>Author: {{ $post->user->name }}</p>
-        <p>Tags:</p>
+       @foreach($tags as $tag) 
+        <h4>{{ $tag->name }}</h4>
+        <p>Posts:</p>
         <ul>
-            @foreach($post->tags as $tag)
-            <li>{{ $tag->name }}</li>
+            
+            @foreach($tag->posts as $post)
+            <li>{{ $post->name }}</li>
             @endforeach
         </ul>
         <hr>
