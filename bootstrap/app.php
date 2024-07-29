@@ -15,6 +15,15 @@ return Application::configure(basePath: dirname(__DIR__))
     ->withMiddleware(function (Middleware $middleware) {
         // $middleware->append(TestMiddleware::class);
         // $middleware->append(CheckRoleMiddleware::class);
+        // $middleware->appendToGroup('test-group', [
+        //     TestMiddleware::class,
+        //     CheckRoleMiddleware::class
+        // ]);
+
+        // $middleware->web(append: [
+        //     TestMiddleware::class,
+        //     CheckRoleMiddleware::class
+        // ]);
     })
     ->withExceptions(function (Exceptions $exceptions) {
         //
