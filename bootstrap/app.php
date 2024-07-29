@@ -24,6 +24,9 @@ return Application::configure(basePath: dirname(__DIR__))
         //     TestMiddleware::class,
         //     CheckRoleMiddleware::class
         // ]);
+        $middleware->alias([
+            'checkRole' => CheckRoleMiddleware::class 
+        ]);
     })
     ->withExceptions(function (Exceptions $exceptions) {
         //
