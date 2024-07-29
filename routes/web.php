@@ -63,3 +63,20 @@ Route::get('location', function() {
 
     return view('location', compact('country'));
 });
+
+Route::get('image', function() {
+    // $user = User::find(1);
+    // $user->image()->create([
+    //     'path' => '/upload/user_one.jpg'
+    // ]);
+
+    $user = User::find(1);
+    // $post->image()->create([
+    //     'path' => '/upload/post_one.jpg'
+    // ]);
+
+    return $user->image;
+
+
+    // dd($user);
+});

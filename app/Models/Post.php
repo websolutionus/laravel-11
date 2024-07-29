@@ -18,4 +18,8 @@ class Post extends Model
     function tags() {
         return $this->belongsToMany(Tag::class);
     }
+
+    function image() {
+        return $this->morphOne(Image::class, 'imageable');
+    }
 }

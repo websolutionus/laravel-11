@@ -56,4 +56,9 @@ class User extends Authenticatable
     function posts() {
        return $this->hasMany(Post::class);
     }
+
+
+    function image() {
+        return $this->morphOne(Image::class, 'imageable');
+    }
 }
