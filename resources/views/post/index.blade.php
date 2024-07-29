@@ -10,7 +10,7 @@
    <form action="{{ route('post.store') }}" method="POST">
     @csrf
     <div>
-        <input type="hidden" value="1" name="user_id">
+        <input type="hidden" value="2" name="user_id">
         <input type="text" name="title" placeholder="Title">
         <br>
         <textarea name="description" placeholder="Description" ></textarea>

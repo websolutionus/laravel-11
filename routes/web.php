@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\PostController;
+use App\Http\Middleware\CheckRoleMiddleware;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -8,4 +9,5 @@ Route::get('/', function () {
 });
 
 Route::get('/post', [PostController::class, 'index'])->name('post.index');
-Route::post('/post', [PostController::class, 'store'])->name('post.store');
+Route::post('/post', [PostController::class, 'store'])->name('post.store')
+    ->middleware(CheckRoleMiddleware::class);
