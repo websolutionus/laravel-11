@@ -7,12 +7,12 @@ use Illuminate\Http\Request;
 use Illuminate\Routing\Controllers\HasMiddleware;
 use Illuminate\Routing\Controllers\Middleware;
 
-class PostController extends Controller implements HasMiddleware
+class PostController extends Controller
 {
-    public static function middleware()
-    {
-        return [new Middleware(CheckRoleMiddleware::class, except: ['index'])];
-    }
+    // public static function middleware()
+    // {
+    //     return [new Middleware(CheckRoleMiddleware::class, except: ['index'])];
+    // }
 
     function index() {
        return view('post.index');
