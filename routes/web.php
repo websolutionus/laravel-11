@@ -11,6 +11,4 @@ Route::get('/', function () {
 
 
 Route::get('/post', [PostController::class, 'index'])->name('post.index');
-Route::group(['middleware' => CheckRoleMiddleware::class], function () {
-    Route::post('/post', [PostController::class, 'store'])->name('post.store'); 
-});
+Route::post('/post', [PostController::class, 'store'])->name('post.store');
