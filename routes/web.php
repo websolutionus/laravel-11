@@ -13,14 +13,10 @@ Route::get('/dashboard', function () {
 })->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::get('/user/dashboard', function() {
-    // $user = Auth::user();
-    // if(Auth::check()) {
-    //     dd($user->email);
-    // }
     return view('user-dashboard');
-})->name('user.dashboard');
+})->name('user.dashboard')->middleware('auth');
 
-Route::middleware('auth')->group(function () {
+Route::group(['middleware' => ['auth']], function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
