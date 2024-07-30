@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\ProfileController;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -12,7 +13,11 @@ Route::get('/dashboard', function () {
 })->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::get('/user/dashboard', function() {
-    dd('User Dashboard');
+    // $user = Auth::user();
+    // if(Auth::check()) {
+    //     dd($user->email);
+    // }
+    return view('user-dashboard');
 })->name('user.dashboard');
 
 Route::middleware('auth')->group(function () {
