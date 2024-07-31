@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 class PostController extends Controller
 {
     function index() {
-        // return to_route('post.create');
+        return response()->file(public_path('uploads/1_BuLDBIovfqIwm2swvYid0A.png'));
     }
 
     function create() {
