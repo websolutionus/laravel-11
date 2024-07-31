@@ -22,4 +22,4 @@ require __DIR__.'/auth.php';
 
 
 // post routes
-Route::resource('post', PostController::class)->middleware('auth');
+Route::resource('post', PostController::class)->middleware(['auth']);
