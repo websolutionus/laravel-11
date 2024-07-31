@@ -16,10 +16,12 @@ Route::get('send-mail', function() {
 });
 
 Route::post('send-mail', function(Request $request) {
-    Mail::raw($request->message, function($message) use ($request) {
-        $message->to($request->email)
-        ->subject('Laravel Test Email');
-    });
+    // Mail::raw($request->message, function($message) use ($request) {
+    //     $message->to($request->email)
+    //     ->subject('Laravel Test Email');
+    // });
+
+    Mail::to($request->email)->send(new SendMail($request->message));
 
     dd("Email Sent");
 })->name('send.mail');
