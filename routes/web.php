@@ -21,6 +21,10 @@ Route::post('send-mail', function(Request $request) {
     //     ->subject('Laravel Test Email');
     // });
 
+    // with queue
+    Mail::to($request->email)->queue(new SendMail($request->message));
+
+    // without queue
     Mail::to($request->email)->send(new SendMail($request->message));
 
     dd("Email Sent");
