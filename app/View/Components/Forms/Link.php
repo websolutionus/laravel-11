@@ -1,12 +1,12 @@
 <?php
 
-namespace App\View\Components\Froms;
+namespace App\View\Components\Forms;
 
 use Closure;
 use Illuminate\Contracts\View\View;
 use Illuminate\View\Component;
 
-class Input extends Component
+class Link extends Component
 {
     /**
      * Create a new component instance.
@@ -21,6 +21,10 @@ class Input extends Component
      */
     public function render(): View|Closure|string
     {
-        return view('components.froms.input');
+        return <<<'blade'
+        <div>
+            <a href="/"> click here</a>
+        </div>
+        blade;
     }
 }

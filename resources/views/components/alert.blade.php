@@ -1,3 +1,3 @@
 <div>
-    <!-- The biggest battle is the war against ignorance. - Mustafa Kemal Atatürk -->
+   <div style="color:red">This is a alert!</div> 
 </div>
