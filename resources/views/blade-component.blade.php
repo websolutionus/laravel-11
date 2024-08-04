@@ -11,14 +11,9 @@
 
     {{-- <x-alert style="color:red; border: 1px solid green;" text="This is a message" /> --}}
 
-    @php
-        $languages = ['Php', 'Javascript', 'Java', 'Dart', 'C', 'C++'];   
-    @endphp
+    <x-button style="padding: 10px; background: red; color: white" class="some-class" />
+    <x-button style="padding: 10px; background: purple; color: white" class="some-class" />
 
-    @foreach($languages as $language)
-        <x-alert :text="$language" />
-    @endforeach
-    
 
 
 </body>
