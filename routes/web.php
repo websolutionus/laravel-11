@@ -16,8 +16,10 @@ Route::get('session', function(Request $request) {
 
     // $value = $request->session()->get('test');
     // $value = session('test', 'this is default value');
-    $value = Session::get('test');
-    dd($value);
+    // $value = Session::get('test');
+    // dd($value);
+
+    Session::flush();
 
 
     return view('session');
