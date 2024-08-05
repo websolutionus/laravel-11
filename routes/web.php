@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Route;
@@ -11,8 +12,16 @@ Route::get('/', function () {
 
 
 Route::get('cache', function() {
-    Cache::put('post', 'post title one', $seconds = 5);
-    $value = Cache::get('post');
+    $users = Cache::rememberForever('users', function () {
+        return User::all();
+    });
 
-    dd($value);
+    // $users = null;
+
+    if(Cache::has('users')) {
+        dd('data is in cache');
+    }
+
+    // $users = Cache::pull('users');
+    return view('cache', compact('users'));
 });
