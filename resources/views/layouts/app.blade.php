@@ -32,8 +32,13 @@
     <!--font-awesome js-->
     <script src="{{ asset('assets/js/Font-Awesome.js') }}"></script>
 
+    <!--plugins js-->
+    <script src="{{ asset('assets/js/tinymce/tinymce.min.js') }}"></script>
+
     <!--main/custom js-->
     <script src="{{ asset('assets/js/main.js') }}"></script>
+
+    {{ $scripts ?? '' }}
 
 </body>
 
