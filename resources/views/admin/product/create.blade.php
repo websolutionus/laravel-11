@@ -9,41 +9,47 @@
                 </div>
                 <div class="card-body">
                     <div class="form-group">
-                        <label for="">Images</label>
+                        <label for="" class="mt-2 mb-2">Images</label>
                         <x-text-input type="file" class="form-control" name="images" />
                     </div>
                     <div class="form-group">
-                        <label for="">Name</label>
+                        <label for="" class="mt-2 mb-2">Name</label>
                         <x-text-input type="text" class="form-control" name="name" />
                     </div>
                     <div class="form-group">
-                        <label for="">price</label>
+                        <label for="" class="mt-2 mb-2">price</label>
                         <x-text-input type="text" class="form-control" name="price" />
                     </div>
 
                     <div class="form-group">
-                        <label for="">Colors</label>
-                        <x-text-input type="text" class="form-control" name="colors" />
+                        <label for="" class="mt-2 mb-2">Colors</label>
+                        <x-select-input name="colors">
+                            <option value="">Select</option>
+                            <option value="black">Block</option>
+                            <option value="green">Green</option>
+                            <option value="red">Red</option>
+                            <option value="cyan">Cyan</option>
+                        </x-select-input>
                     </div>
 
                     <div class="form-group">
-                        <label for="">Shot Description</label>
+                        <label for="" class="mt-2 mb-2">Shot Description</label>
                         <x-text-input type="text" class="form-control" name="short_description" />
                     </div>
 
                     <div class="form-group">
-                        <label for="">Qty</label>
+                        <label for="" class="mt-2 mb-2">Qty</label>
                         <x-text-input type="text" class="form-control" name="qty" />
                     </div>
 
                     <div class="form-group">
-                        <label for="">Sku</label>
+                        <label for="" class="mt-2 mb-2">Sku</label>
                         <x-text-input type="text" class="form-control" name="sku" />
                     </div>
 
                     <div class="form-group">
-                        <label for="">Description</label>
-                        <textarea name="" id="editor" cols="30" rows="10"></textarea>
+                        <label for="" class="mt-2 mb-2">Description</label>
+                        <textarea name="description" id="editor" cols="30" rows="10"></textarea>
                     </div>
 
                     <x-primary-button>Submit</x-primary-button>
