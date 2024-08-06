@@ -1,12 +1,13 @@
 <section>
     <header>
-        <h2 class="text-lg font-medium text-gray-900">
+        <h4 class="text-lg font-medium text-gray-900">
             {{ __('Profile Information') }}
-        </h2>
+        </h4>
 
         <p class="mt-1 text-sm text-gray-600">
             {{ __("Update your account's profile information and email address.") }}
         </p>
+        <hr>
     </header>
 
     <form id="send-verification" method="post" action="{{ route('verification.send') }}">
@@ -56,7 +57,7 @@
                     x-show="show"
                     x-transition
                     x-init="setTimeout(() => show = false, 2000)"
-                    class="text-sm text-gray-600"
+                    class="text-success font-medium text-sm"
                 >{{ __('Saved.') }}</p>
             @endif
         </div>

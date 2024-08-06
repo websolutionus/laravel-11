@@ -42,7 +42,13 @@
                         </a>
                     </li>
                     <li>
-                        <a href="#" class="common_btn">Let’s Talk</a>
+                        @auth
+                            <a href="{{ route('profile.edit') }}" class="common_btn">Profile</a>
+
+                            <a href="{{ route('login') }}" class="common_btn">Logout</a>
+                        @else 
+                            <a href="{{ route('login') }}" class="common_btn">Login</a>
+                        @endauth
                     </li>
                 </ul>
             </div>
