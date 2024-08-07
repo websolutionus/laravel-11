@@ -19,10 +19,18 @@
                     <form action="{{ route('product.store') }}" method="POST" enctype="multipart/form-data">
                         @csrf
                         <div class="form-group">
+                            <div>
+                                <img style="width: 100px !important" src="{{ asset($product->image) }}" alt="">
+                            </div>
                             <label for="" class="mt-2 mb-2">Image</label>
                             <x-text-input type="file" class="form-control" name="image" />
                         </div>
                         <div class="form-group">
+                            <div class="d-flex">
+                            @foreach($product->images as $image)
+                                <img style="width: 100px !important" class="ms-2 me-2 mt-2 mb-2" src="{{ asset($image->path) }}" alt="">
+                            @endforeach
+                            </div>
                             <label for="" class="mt-2 mb-2">Images</label>
                             <x-text-input type="file" class="form-control" name="images[]" multiple  />
                         </div>
@@ -39,10 +47,10 @@
                             <label for="" class="mt-2 mb-2">Colors</label>
                             <x-select-input name="colors[]" multiple>
                                 <option value="">Select</option>
-                                <option value="black">Block</option>
-                                <option value="green">Green</option>
-                                <option value="red">Red</option>
-                                <option value="cyan">Cyan</option>
+                                <option @selected(in_array('black', $colors)) value="black">Black</option>
+                                <option @selected(in_array('green', $colors)) value="green">Green</option>
+                                <option @selected(in_array('red', $colors)) value="red">Red</option>
+                                <option @selected(in_array('cyan', $colors)) value="cyan">Cyan</option>
                             </x-select-input>
                         </div>
     

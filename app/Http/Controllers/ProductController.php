@@ -87,8 +87,9 @@ class ProductController extends Controller
      */
     public function edit(string $id)
     {
-        $product = Product::findOrFail($id);
-        return view('admin.product.edit', compact('product'));
+        $product = Product::with(['colors', 'images'])->findOrFail($id);
+        $colors = $product->colors->pluck('name')->toArray();
+        return view('admin.product.edit', compact('product', 'colors'));
     }
 
     /**
