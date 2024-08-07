@@ -12,7 +12,7 @@
             <div class="card">
                 <div class="card-header d-flex justify-content-between">
                     <h5>Create Product</h5>
-                    <a href="" class="btn btn-primary">Go Back</a>
+                    <a href="{{ route('product.index') }}" class="btn btn-primary">Go Back</a>
                 </div>
                 <div class="card-body">
 

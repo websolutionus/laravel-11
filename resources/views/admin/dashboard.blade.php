@@ -12,29 +12,28 @@
                         <thead>
                           <tr>
                             <th scope="col">#</th>
-                            <th scope="col">First</th>
-                            <th scope="col">Last</th>
-                            <th scope="col">Handle</th>
+                            <th scope="col">Image</th>
+                            <th scope="col">Name</th>
+                            <th scope="col">Price</th>
+                            <th scope="col">Qty</th>
+                            <th scope="col">Action</th>
                           </tr>
                         </thead>
                         <tbody>
+                          @foreach($products as $product)
                           <tr>
-                            <th scope="row">1</th>
-                            <td>Mark</td>
-                            <td>Otto</td>
-                            <td>@mdo</td>
+                            <th scope="row">{{ $loop->iteration }}</th>
+                            <td><img style="width: 100px !important;" src="{{ asset($product->image) }}" alt=""></td>
+                            <td>{{ $product->name }}</td>
+                            <td>{{ $product->price }}</td>
+                            <td>{{ $product->qty }}</td>
+                            <td>
+                              <a href="" class="btn btn-primary">edit</a>
+                              <a href="" class="btn btn-danger">delete</a>
+                            </td>
                           </tr>
-                          <tr>
-                            <th scope="row">2</th>
-                            <td>Jacob</td>
-                            <td>Thornton</td>
-                            <td>@fat</td>
-                          </tr>
-                          <tr>
-                            <th scope="row">3</th>
-                            <td colspan="2">Larry the Bird</td>
-                            <td>@twitter</td>
-                          </tr>
+                          @endforeach
+                         
                         </tbody>
                       </table>
                       
