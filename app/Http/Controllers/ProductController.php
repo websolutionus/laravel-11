@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\ProductStoreRequest;
 use App\Models\Product;
 use App\Models\ProductColor;
+use App\Models\ProductImage;
 use Illuminate\Http\Request;
 
 class ProductController extends Controller
@@ -22,16 +23,23 @@ class ProductController extends Controller
      */
     public function create()
     {
-       return view('admin.product.create'); 
+        return view('admin.product.create');
     }
 
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(ProductStoreRequest $request)
     {
-        
         $product = new Product();
+
+        if ($request->hasFile('image')) {
+            $image = $request->file('image');
+            $fileName = $image->store('', 'public');
+            $filePath = 'uploads/' . $fileName;
+            $product->image = $filePath;
+        }
+        
         $product->name = $request->name;
         $product->price = $request->price;
         $product->short_description = $request->short_description;
@@ -41,14 +49,28 @@ class ProductController extends Controller
         $product->save();
 
         // insert colors
-        if($request->has('colors') && $request->filled('colors')){
-            foreach($request->colors as $color){
+        if ($request->has('colors') && $request->filled('colors')) {
+            foreach ($request->colors as $color) {
                 ProductColor::create([
-                    'product_id' => $request->id,
+                    'product_id' => $product->id,
                     'name' => $color
                 ]);
             }
         }
+
+        if ($request->hasFile('images')) {
+            foreach ($request->file('images') as $image) {
+                // store image
+                $fileName = $image->store('', 'public');
+                $filePath = 'uploads/' . $fileName;
+                ProductImage::create([
+                    'product_id' => $product->id,
+                    'path' => $filePath
+                ]);
+            }
+        }
+
+        return redirect()->back();
     }
 
     /**
