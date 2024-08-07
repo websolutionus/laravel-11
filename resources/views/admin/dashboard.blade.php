@@ -28,7 +28,7 @@
                             <td>{{ $product->price }}</td>
                             <td>{{ $product->qty }}</td>
                             <td>
-                              <a href="" class="btn btn-primary">edit</a>
+                              <a href="{{ route('product.edit', $product->id) }}" class="btn btn-primary">edit</a>
                               <a href="" class="btn btn-danger">delete</a>
                             </td>
                           </tr>
