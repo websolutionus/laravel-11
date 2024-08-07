@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\ProductStoreRequest;
+use App\Models\Product;
+use App\Models\ProductColor;
 use Illuminate\Http\Request;
 
 class ProductController extends Controller
@@ -26,9 +28,27 @@ class ProductController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(ProductStoreRequest $request)
+    public function store(Request $request)
     {
-        dd($request->all());
+        
+        $product = new Product();
+        $product->name = $request->name;
+        $product->price = $request->price;
+        $product->short_description = $request->short_description;
+        $product->qty = $request->qty;
+        $product->sku = $request->sku;
+        $product->description = $request->description;
+        $product->save();
+
+        // insert colors
+        if($request->has('colors') && $request->filled('colors')){
+            foreach($request->colors as $color){
+                ProductColor::create([
+                    'product_id' => $request->id,
+                    'name' => $color
+                ]);
+            }
+        }
     }
 
     /**

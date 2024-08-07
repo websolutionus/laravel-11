@@ -1,7 +1,7 @@
 <x-app-layout>
     <section class="wsus__product mt_145 pb_100">
         <div class="container">
-            
+
             @if ($errors->any())
                 @foreach($errors->all() as $error)
                     <div class="alert alert-danger">{{ $error }}</div>
@@ -37,7 +37,7 @@
     
                         <div class="form-group">
                             <label for="" class="mt-2 mb-2">Colors</label>
-                            <x-select-input name="colors">
+                            <x-select-input name="colors[]" multiple>
                                 <option value="">Select</option>
                                 <option value="black">Block</option>
                                 <option value="green">Green</option>

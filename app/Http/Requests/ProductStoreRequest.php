@@ -19,7 +19,7 @@ class ProductStoreRequest extends FormRequest
             'name' => ['required', 'string', 'max:255'],
             'price' => ['required', 'numeric'],
             'colors'=> ['nullable'],
-            'shot_description' => ['required', 'string', 'max:255'],
+            'short_description' => ['required', 'string', 'max:255'],
             'qty' => ['required', 'numeric'],
             'sku' => ['required', 'string', 'max:255'],
             'description' => ['required', 'string'],
