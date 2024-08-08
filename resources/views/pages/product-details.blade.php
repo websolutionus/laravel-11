@@ -107,7 +107,9 @@
                         _token: "{{ csrf_token() }}",
                     },
                     beforeSend: function() {},
-                    success: function(data){},
+                    success: function(data){
+                        console.log(data);
+                    },
                     error: function(xhr, status, error){},
                    })
                 });
