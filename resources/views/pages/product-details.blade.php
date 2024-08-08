@@ -47,21 +47,19 @@
                         </p>
 
                         <h6 class="mt_30">Color</h6>
-                        <select class="select_2" name="state">
-                            <option value="AL">Select Color</option>
-
+                        <select class="select_2 color" name="color" >
+                            <option value="">Select Color</option>
                             @foreach($product->colors as $color)
                             <option value="{{ $color->name }}">{{ $color->name }}</option>
                             @endforeach
-                            
                         </select>
 
 
                         <div class="wsus__product_add_cart">
                             <div class="wsus__product_quantity">
-                                <button class="minus" type="submit"><i class="far fa-minus"></i></button>
-                                <input type="text" placeholder="01">
-                                <button class="plus" type="submit"><i class="far fa-plus"></i></button>
+                                <button class="minus decrement" type="submit"><i class="far fa-minus"></i></button>
+                                <input type="text" placeholder="01" value="1" min="1" class="qty">
+                                <button class="plus increment" type="submit"><i class="far fa-plus"></i></button>
                             </div>
                             <div class="wsus__buy_cart_button">
                                 <a href="" class="common_btn add-to-cart" data-id="{{ $product->id }}">Add to Cart</a>
@@ -100,21 +98,53 @@
                 $(".add-to-cart").on("click", function(e) {
                     e.preventDefault();
                     let id = $(this).data('id');
+                    let color = $('.color').val();
+                    let qty = $('.qty').val();
                    $.ajax({
                     method: 'POST',
                     url: "{{ route('add-to-cart', ':id') }}".replace(':id', id),
                     data: {
                         _token: "{{ csrf_token() }}",
+                        color: color,
+                        qty: qty
                     },
-                    beforeSend: function() {},
+                    beforeSend: function() {
+                        if (validation()) return false;
+                    },
                     success: function(data){
                         console.log(data);
                     },
                     error: function(xhr, status, error){},
                    })
                 });
+
+                function validation() {
+                    let color = $('.color').val();
+                    console.log(color);
+                    if(color == "") {
+                        console.log("color is required");
+                        return true;
+                    }
+
+                    return false;
+                }
+
+                $('.increment').on('click', function() {
+                    let qty = $('.qty').val();
+                    qty = parseInt(qty) + 1;
+                    $('.qty').val(qty);
+                })
+
+                $('.decrement').on('click', function() {
+                    let qty = $('.qty').val();
+                    if(qty > 1) {
+                        qty = parseInt(qty) - 1;
+                        $('.qty').val(qty);
+                    }
+                })
             })
         </script>
     </x-slot>
 </x-app-layout>
+
 

@@ -23,8 +23,8 @@ class AddToCartController extends Controller
            'image' => $product->image,
            'name' => $product->name,
            'price' => $product->price,
-           'color' => 'red',
-           'qty' => 1
+           'color' => $request->color,
+           'qty' => $request->qty
        ];
 
        Session::put('cart', $this->cart);
