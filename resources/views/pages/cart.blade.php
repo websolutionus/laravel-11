@@ -23,81 +23,33 @@
                                     </tr>
                                 </thead>
                                 <tbody>
+                                    @foreach($products as $product)
                                     <tr>
                                         <td class="pro_img">
-                                            <img src="images/product_cart_1.jpg" alt="product" class="img-fluid w-100">
+                                            <img src="{{ asset($product['image']) }}" alt="product" class="img-fluid w-100">
                                         </td>
 
                                         <td class="pro_name">
-                                            <a href="#">Black Sneakers</a>
+                                            <a href="#">{{ $product['name'] }}</a>
                                         </td>
 
                                         <td class="pro_select">
                                             <div class="quentity_btn">
                                                 <button class="btn btn-danger"><i class="fal fa-minus"></i></button>
-                                                <input type="text" placeholder="1">
+                                                <input type="text" placeholder="1" value="{{ $product['qty'] }}" min="1">
                                                 <button class="btn btn-success"><i class="fal fa-plus"></i></button>
                                             </div>
                                         </td>
 
                                         <td class="pro_tk">
-                                            <h6>$120.00</h6>
+                                            <h6>${{ $product['price'] * $product['qty'] }}</h6>
                                         </td>
 
                                         <td class="pro_icon">
                                             <a href="#"><i class="fal fa-times"></i></a>
                                         </td>
                                     </tr>
-                                    <tr>
-                                        <td class="pro_img">
-                                            <img src="images/product_cart_2.jpg" alt="product" class="img-fluid w-100">
-                                        </td>
-
-                                        <td class="pro_name">
-                                            <a href="#">Black Sneakers</a>
-                                        </td>
-
-                                        <td class="pro_select">
-                                            <div class="quentity_btn">
-                                                <button class="btn btn-danger"><i class="fal fa-minus"></i></button>
-                                                <input type="text" placeholder="2">
-                                                <button class="btn btn-success"><i class="fal fa-plus"></i></button>
-                                            </div>
-                                        </td>
-
-                                        <td class="pro_tk">
-                                            <h6>$99.000</h6>
-                                        </td>
-
-                                        <td class="pro_icon">
-                                            <a href="#"><i class="fal fa-times"></i></a>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td class="pro_img">
-                                            <img src="images/product_cart_3.jpg" alt="product" class="img-fluid w-100">
-                                        </td>
-
-                                        <td class="pro_name">
-                                            <a href="#">Black Sneakers</a>
-                                        </td>
-
-                                        <td class="pro_select">
-                                            <div class="quentity_btn">
-                                                <button class="btn btn-danger"><i class="fal fa-minus"></i></button>
-                                                <input type="text" placeholder="3">
-                                                <button class="btn btn-success"><i class="fal fa-plus"></i></button>
-                                            </div>
-                                        </td>
-
-                                        <td class="pro_tk">
-                                            <h6>$120.00</h6>
-                                        </td>
-
-                                        <td class="pro_icon">
-                                            <a href="#"><i class="fal fa-times"></i></a>
-                                        </td>
-                                    </tr>
+                                    @endforeach
                                 </tbody>
                             </table>
                         </div>
