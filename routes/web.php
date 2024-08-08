@@ -1,12 +1,11 @@
 <?php
 
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\ProductPageController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', function () {
-    return view('pages.home');
-});
+Route::get('/', [ProductPageController::class, 'index'])->name('home');
 
 Route::get('/dashboard', [ProductController::class, 'index'])->middleware(['auth', 'verified'])->name('dashboard');
 
