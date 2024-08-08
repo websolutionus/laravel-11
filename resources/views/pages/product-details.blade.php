@@ -64,9 +64,7 @@
                                 <button class="plus" type="submit"><i class="far fa-plus"></i></button>
                             </div>
                             <div class="wsus__buy_cart_button">
-                                <a href="#" class="cart"><img src="images/cart_icon_black.svg" alt="cart"
-                                        class="img-fluid w-100"></a>
-                                <a href="cart.html" class="common_btn">Buy Now</a>
+                                <a href="" class="common_btn add-to-cart">Add to Cart</a>
                             </div>
                         </div>
                         <ul class="wishlist d-flex flex-wrap">
@@ -95,4 +93,16 @@
     <!--============================
        PRODUCT DETAILS END
     =============================-->
+
+    <x-slot name="scripts">
+        <script>
+            $(document).ready(function() {
+                $(".add-to-cart").on("click", function(e) {
+                    e.preventDefault();
+                    alert("Added to cart");
+                });
+            })
+        </script>
+    </x-slot>
 </x-app-layout>
+
