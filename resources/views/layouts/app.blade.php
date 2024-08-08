@@ -11,6 +11,10 @@
     <link rel="stylesheet" href="{{ asset('assets/css/all.min.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/css/bootstrap.min.css') }}">
 
+    <link rel="stylesheet" href="{{ asset('assets/css/slick.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/css/select2.min.css') }}">
+
+
     <link rel="stylesheet" href="{{ asset('assets/css/spacing.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/css/style.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/css/responsive.css') }}">
@@ -31,6 +35,9 @@
     <script src="{{ asset('assets/js/bootstrap.bundle.min.js') }}"></script>
     <!--font-awesome js-->
     <script src="{{ asset('assets/js/Font-Awesome.js') }}"></script>
+
+     <script src="{{ asset('assets/js/slick.min.js') }}"></script>
+     <script src="{{ asset('assets/js/select2.min.js') }}"></script>
 
     <!--plugins js-->
     <script src="{{ asset('assets/js/tinymce/tinymce.min.js') }}"></script>
