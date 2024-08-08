@@ -64,7 +64,7 @@
                                 <button class="plus" type="submit"><i class="far fa-plus"></i></button>
                             </div>
                             <div class="wsus__buy_cart_button">
-                                <a href="" class="common_btn add-to-cart">Add to Cart</a>
+                                <a href="" class="common_btn add-to-cart" data-id="{{ $product->id }}">Add to Cart</a>
                             </div>
                         </div>
                         <ul class="wishlist d-flex flex-wrap">
@@ -99,7 +99,17 @@
             $(document).ready(function() {
                 $(".add-to-cart").on("click", function(e) {
                     e.preventDefault();
-                    alert("Added to cart");
+                    let id = $(this).data('id');
+                   $.ajax({
+                    method: 'POST',
+                    url: "{{ route('add-to-cart', ':id') }}".replace(':id', id),
+                    data: {
+                        _token: "{{ csrf_token() }}",
+                    },
+                    beforeSend: function() {},
+                    success: function(data){},
+                    error: function(xhr, status, error){},
+                   })
                 });
             })
         </script>
