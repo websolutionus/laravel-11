@@ -34,10 +34,10 @@
                 </ul>
                 <ul class="right_menu d-flex flex-wrap align-items-center">
                     <li>
-                        <a href="#" class="wsus__manu_cart icon">
+                        <a href="{{ route('cart.index') }}" class="wsus__manu_cart icon">
                             <span>
-                                <img src="images/cart_icon_black.svg" alt="cart" class="img-fluid">
-                                <b>2</b>
+                                <img src="{{ asset('assets/images/cart_icon_black.svg') }}" alt="cart" class="img-fluid">
+                                <b class="cart-count">{{ count(Session::get('cart', [])) }}</b>
                             </span>
                         </a>
                     </li>

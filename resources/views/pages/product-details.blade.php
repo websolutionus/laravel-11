@@ -112,7 +112,9 @@
                         if (validation()) return false;
                     },
                     success: function(data){
-                        console.log(data);
+                       if(data.status == 'ok') {
+                        $('.cart-count').html(data.cart_count);
+                       }
                     },
                     error: function(xhr, status, error){},
                    })
