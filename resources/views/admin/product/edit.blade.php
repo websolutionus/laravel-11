@@ -16,8 +16,9 @@
                 </div>
                 <div class="card-body">
 
-                    <form action="{{ route('product.store') }}" method="POST" enctype="multipart/form-data">
+                    <form action="{{ route('product.update', $product->id) }}" method="POST" enctype="multipart/form-data">
                         @csrf
+                        @method('PUT')
                         <div class="form-group">
                             <div>
                                 <img style="width: 100px !important" src="{{ asset($product->image) }}" alt="">
