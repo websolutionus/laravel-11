@@ -12,6 +12,7 @@ Route::get('/product-details/{id}', [ProductPageController::class, 'show'])->nam
 // cart routes
 Route::post('/add-to-cart/{id}', [AddToCartController::class, 'store'])->name('add-to-cart');
 Route::delete('/remove-from-cart/{id}', [AddToCartController::class, 'destroy'])->name('remove-from-cart');
+Route::post('/update-qty', [AddToCartController::class, 'updateQty'])->name('update-qty');
 
 Route::get('cart', [CartPageController::class, 'index'])->name('cart.index');
 

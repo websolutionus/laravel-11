@@ -1,5 +1,5 @@
 <x-app-layout>
-       <!--============================
+    <!--============================
         CART START
     =============================-->
     <section class="wsus__cart mt_170 pb_100">
@@ -23,36 +23,43 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @foreach($products as $product)
-                                    <tr>
-                                        <td class="pro_img">
-                                            <img src="{{ asset($product['image']) }}" alt="product" class="img-fluid w-100">
-                                        </td>
+                                    @foreach ($products as $product)
+                                        <tr>
+                                            <td class="pro_img">
+                                                <img src="{{ asset($product['image']) }}" alt="product"
+                                                    class="img-fluid w-100">
+                                            </td>
 
-                                        <td class="pro_name">
-                                            <a href="#">{{ $product['name'] }}</a>
-                                        </td>
+                                            <td class="pro_name">
+                                                <a href="#">{{ $product['name'] }}</a>
+                                            </td>
 
-                                        <td class="pro_select">
-                                            <div class="quentity_btn">
-                                                <button class="btn btn-danger"><i class="fal fa-minus"></i></button>
-                                                <input type="text" placeholder="1" value="{{ $product['qty'] }}" min="1">
-                                                <button class="btn btn-success"><i class="fal fa-plus"></i></button>
-                                            </div>
-                                        </td>
+                                            <td class="pro_select">
+                                                <div class="quentity_btn">
+                                                    <button class="btn btn-danger decrement"
+                                                        data-id="{{ $product['id'] }}"><i
+                                                            class="fal fa-minus"></i></button>
+                                                    <input class="qty" type="text" placeholder="1"
+                                                        value="{{ $product['qty'] }}" min="1">
+                                                    <button class="btn btn-success increment"
+                                                        data-id="{{ $product['id'] }}"><i
+                                                            class="fal fa-plus"></i></button>
+                                                </div>
+                                            </td>
 
-                                        <td class="pro_tk">
-                                            <h6>${{ $product['price'] * $product['qty'] }}</h6>
-                                        </td>
+                                            <td class="pro_tk">
+                                                <h6>${{ $product['price'] * $product['qty'] }}</h6>
+                                            </td>
 
-                                        <td class="pro_icon">
-                                            <form action="{{ route('remove-from-cart', $product['id']) }}" method="POST">
-                                                @csrf
-                                                @method('DELETE')
-                                                <button type="submit"><i class="fal fa-times"></i></button>
-                                            </form>
-                                        </td>
-                                    </tr>
+                                            <td class="pro_icon">
+                                                <form action="{{ route('remove-from-cart', $product['id']) }}"
+                                                    method="POST">
+                                                    @csrf
+                                                    @method('DELETE')
+                                                    <button type="submit"><i class="fal fa-times"></i></button>
+                                                </form>
+                                            </td>
+                                        </tr>
                                     @endforeach
                                 </tbody>
                             </table>
@@ -91,15 +98,59 @@
     </section>
     <!--============================
         CART END
-    =============================--> 
+    =============================-->
 
     <x-slot name="scripts">
         <script>
             $(document).ready(function() {
-                
+                $('.increment').on('click', function() {
+                    let qty = $('.qty').val();
+                    let id = $(this).data('id');
+                    qty = parseInt(qty) + 1;
+                    $('.qty').val(qty);
+
+                    $.ajax({
+                        method: 'POST',
+                        url: "{{ route('update-qty') }}",
+                        data: {
+                            _token: "{{ csrf_token() }}",
+                            id: id,
+                            qty: qty,
+                        },
+                        success: function(data) {
+                            if (data.status == 'ok') {
+                                window.location.reload();
+                            }
+                        },
+                        error: function(xhr, status, error) {},
+                    })
+                })
+
+                $('.decrement').on('click', function() {
+                    let qty = $('.qty').val();
+                    let id = $(this).data('id');
+                    if (qty > 1) {
+                        qty = parseInt(qty) - 1;
+                        $('.qty').val(qty);
+
+                        $.ajax({
+                            method: 'POST',
+                            url: "{{ route('update-qty') }}",
+                            data: {
+                                _token: "{{ csrf_token() }}",
+                                id: id,
+                                qty: qty,
+                            },
+                            success: function(data) {
+                                if (data.status == 'ok') {
+                                    window.location.reload();
+                                }
+                            },
+                            error: function(xhr, status, error) {},
+                        })
+                    }
+                })
             })
         </script>
     </x-slot>
 </x-app-layout>
-
-

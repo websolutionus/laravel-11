@@ -45,4 +45,11 @@ class AddToCartController extends Controller
         return redirect()->back();
 
     }
+
+    function updateQty(Request $request) {
+        $cartItems = $this->cart;
+        $cartItems[$request->id]['qty'] = $request->qty;
+        Session::put('cart', $cartItems);
+        return response(['status' => 'ok']);
+    }
 }
