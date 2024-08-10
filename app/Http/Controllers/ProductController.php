@@ -72,7 +72,7 @@ class ProductController extends Controller
                 ]);
             }
         }
-
+        notyf('Product Create Successfully.');
         return redirect()->back();
     }
 
@@ -145,6 +145,7 @@ class ProductController extends Controller
                 ]);
             }
         }
+        notyf('Product Updated Successfully.');
 
         return redirect()->back();
     }
@@ -162,6 +163,7 @@ class ProductController extends Controller
         }
         $product->delete();
 
+        notyf('Product Deleted Successfully.');
         return redirect()->back();
     }
 }

@@ -13,7 +13,7 @@
 
     <link rel="stylesheet" href="{{ asset('assets/css/slick.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/css/select2.min.css') }}">
-
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/notyf@3/notyf.min.css">
 
     <link rel="stylesheet" href="{{ asset('assets/css/spacing.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/css/style.css') }}">
@@ -41,9 +41,14 @@
 
     <!--plugins js-->
     <script src="{{ asset('assets/js/tinymce/tinymce.min.js') }}"></script>
+    <script src="https://cdn.jsdelivr.net/npm/notyf@3/notyf.min.js"></script>
 
     <!--main/custom js-->
     <script src="{{ asset('assets/js/main.js') }}"></script>
+
+    <script>
+        var notyf = new Notyf();
+    </script>
 
     {{ $scripts ?? '' }}
 

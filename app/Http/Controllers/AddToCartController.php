@@ -42,6 +42,8 @@ class AddToCartController extends Controller
         unset($cartItems[$id]);
         Session::put('cart', $cartItems);
 
+        notyf()->success('Product removed from cart.');
+
         return redirect()->back();
 
     }
@@ -50,6 +52,7 @@ class AddToCartController extends Controller
         $cartItems = $this->cart;
         $cartItems[$request->id]['qty'] = $request->qty;
         Session::put('cart', $cartItems);
+        notyf()->success('Product quantity updated.');
         return response(['status' => 'ok']);
     }
 }

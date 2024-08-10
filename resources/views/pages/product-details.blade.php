@@ -114,6 +114,7 @@
                     success: function(data){
                        if(data.status == 'ok') {
                         $('.cart-count').html(data.cart_count);
+                        notyf.success('Product Added To Cart');
                        }
                     },
                     error: function(xhr, status, error){},
@@ -124,7 +125,7 @@
                     let color = $('.color').val();
                     console.log(color);
                     if(color == "") {
-                        console.log("color is required");
+                        notyf.error('Please Select Color');
                         return true;
                     }
 
