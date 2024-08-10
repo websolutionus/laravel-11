@@ -46,7 +46,11 @@
                                         </td>
 
                                         <td class="pro_icon">
-                                            <a href="#"><i class="fal fa-times"></i></a>
+                                            <form action="{{ route('remove-from-cart', $product['id']) }}" method="POST">
+                                                @csrf
+                                                @method('DELETE')
+                                                <button type="submit"><i class="fal fa-times"></i></button>
+                                            </form>
                                         </td>
                                     </tr>
                                     @endforeach

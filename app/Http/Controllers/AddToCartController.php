@@ -36,4 +36,13 @@ class AddToCartController extends Controller
        ]);
 
     }
+
+    function destroy($id) {
+        $cartItems = $this->cart;
+        unset($cartItems[$id]);
+        Session::put('cart', $cartItems);
+
+        return redirect()->back();
+
+    }
 }
