@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Events\PostCreateEvent;
 use App\Mail\PostCreateMail;
 use App\Models\Post;
 use Illuminate\Http\Request;
@@ -35,6 +36,9 @@ class PostController extends Controller
         $post->title = 'Test Title';
         $post->description = 'Test Description';
         $post->save();
+
+        event(new PostCreateEvent("user@gmail.com"));
+
 
         dd($post);
     }

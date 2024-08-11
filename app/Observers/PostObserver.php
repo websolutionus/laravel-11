@@ -13,7 +13,6 @@ class PostObserver
      */
     public function created(Post $post): void
     {
-        Mail::to('5VbU5@example.com')->send(new PostCreateMail());
     }
 
     /**
