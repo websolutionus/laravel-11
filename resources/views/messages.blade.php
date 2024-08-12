@@ -9,6 +9,8 @@
 </head>
 <body>
     <h1>Messages</h1>
+    <div id="messages">
 
+    </div>
 </body>
 </html>
