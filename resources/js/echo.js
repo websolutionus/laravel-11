@@ -10,7 +10,9 @@ window.Echo = new Echo({
     forceTLS: true
 });
 
-window.Echo.private('chat').listen('NewMessage', (e) => {
+var userId = document.querySelector('meta[name="user_id"]').getAttribute('content');
+
+window.Echo.private('chat.' + userId).listen('NewMessage', (e) => {
     console.log(e);
     document.getElementById('messages').innerHTML += `<p>${e.message}</p>`
 });

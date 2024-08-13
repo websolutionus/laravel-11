@@ -17,7 +17,7 @@ class NewMessage implements ShouldBroadcast
     /**
      * Create a new event instance.
      */
-    public function __construct(public $message)
+    public function __construct(public $message, public $id)
     {
       
     }
@@ -30,7 +30,7 @@ class NewMessage implements ShouldBroadcast
     public function broadcastOn(): array
     {
         return [
-            new PrivateChannel('chat'),
+            new PrivateChannel('chat.'.$this->id), // chat.2
         ];
     }
 }

@@ -17,7 +17,7 @@ Route::get('messages', function() {
 });
 
 Route::get('send-message', function() {
-    event(new NewMessage('Hi seems like its working!'));
+    event(new NewMessage('Hi seems like its working!', 2));
     dd('Message Sent');
 });
 
