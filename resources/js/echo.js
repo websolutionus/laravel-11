@@ -10,7 +10,7 @@ window.Echo = new Echo({
     forceTLS: true
 });
 
-window.Echo.channel('chat').listen('NewMessage', (e) => {
+window.Echo.private('chat').listen('NewMessage', (e) => {
     console.log(e);
     document.getElementById('messages').innerHTML += `<p>${e.message}</p>`
 });

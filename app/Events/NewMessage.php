@@ -30,7 +30,7 @@ class NewMessage implements ShouldBroadcast
     public function broadcastOn(): array
     {
         return [
-            new Channel('chat'),
+            new PrivateChannel('chat'),
         ];
     }
 }

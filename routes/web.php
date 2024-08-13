@@ -1,5 +1,6 @@
 <?php
 
+use App\Events\NewMessage;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
@@ -13,6 +14,11 @@ Route::get('/dashboard', function () {
 
 Route::get('messages', function() {
     return view('messages');
+});
+
+Route::get('send-message', function() {
+    event(new NewMessage('Hi seems like its working!'));
+    dd('Message Sent');
 });
 
 Route::middleware('auth')->group(function () {
