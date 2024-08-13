@@ -16,3 +16,14 @@ window.Echo.private('chat.' + userId).listen('NewMessage', (e) => {
     console.log(e);
     document.getElementById('messages').innerHTML += `<p>${e.message}</p>`
 });
+
+window.Echo.join('online')
+    .here(users => {
+        console.log(users);
+    })
+    .joining(user => {
+        console.log('Joining',user);
+    })
+    .leaving(user => {
+        console.log('Leaving',user);
+    });
