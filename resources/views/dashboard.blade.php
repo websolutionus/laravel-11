@@ -58,4 +58,9 @@
         </div>
     </div>
 
+
+    <x-slot name="scripts">
+        @vite(['resources/js/app.js'])
+    </x-slot>
+
 </x-app-layout>
