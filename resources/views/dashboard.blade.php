@@ -3,12 +3,17 @@
     <div id="frame">
         @include('layouts.sidebar')
         <div class="content">
-
+            <div class="loader d-none">
+                <div class="loader-inner">
+                    <l-square size="35" stroke="5" stroke-length="0.25" bg-opacity="0.1" speed="1.2"
+                        color="black"></l-square>
+                </div>
+            </div>
             <div class="contact-profile">
                 <img src="http://emilcarlsson.se/assets/harveyspecter.png" alt="" />
                 <p>Harvey Specter</p>
                 <div class="social-media">
-                   
+
                 </div>
             </div>
 
