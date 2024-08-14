@@ -27,7 +27,7 @@
     <div id="contacts">
         <ul>
             @forelse($users as $user)
-            <li class="contact">
+            <li class="contact" data-id="{{ $user->id }}">
                 <div class="wrap">
                     <span class="contact-status online"></span>
                     <img src="{{ asset('default-images/avatar.jpg') }}" alt="" />

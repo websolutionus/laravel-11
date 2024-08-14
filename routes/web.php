@@ -16,4 +16,8 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
+
+/** Message routes */
+Route::get('fetch-messages', [ChatController::class, 'fetchMessages'])->name('fetch-messages');
+
 require __DIR__.'/auth.php';
