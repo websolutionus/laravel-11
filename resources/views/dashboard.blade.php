@@ -3,6 +3,9 @@
     <div id="frame">
         @include('layouts.sidebar')
         <div class="content">
+            <div class="blank-wrap">
+                <div class="inner-blank-wrap">Select a contact to start messaging</div>
+            </div> 
             <div class="loader d-none">
                 <div class="loader-inner">
                     <l-square size="35" stroke="5" stroke-length="0.25" bg-opacity="0.1" speed="1.2"

@@ -808,3 +808,17 @@ body {
   left: 50%;
   transform: translate(-50%, -50%);
 }
+
+.blank-wrap {
+    width: 100%;
+    height: 100%;
+    background-color: #f7f7f7;
+    position: relative;
+    z-index: 9999;
+}
+.inner-blank-wrap {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }

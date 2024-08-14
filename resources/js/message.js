@@ -60,6 +60,9 @@ $(document).ready(function () {
     let contactId = $(this).data('id');
     selectedContact.attr('content', contactId);
 
+    // hide the blank wrap
+    $('.blank-wrap').addClass('d-none');
+
     // fetch messages
     fetchMessages();
 
