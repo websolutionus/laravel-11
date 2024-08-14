@@ -1,8 +1,8 @@
 <div id="sidepanel">
     <div id="profile">
         <div class="wrap">
-            <img id="profile-img" src="http://emilcarlsson.se/assets/mikeross.png" class="online" alt="" />
-            <p>Mike Ross</p>
+            <img id="profile-img" src="{{ asset('default-images/avatar.jpg') }}" class="online" alt="" />
+            <p>{{ auth()->user()->name }}</p>
             <i class="fa fa-chevron-down expand-button" aria-hidden="true"></i>
             <div id="status-options">
                 <ul>
@@ -26,6 +26,7 @@
        <hr> 
     <div id="contacts">
         <ul>
+            @forelse($users as $user)
             <li class="contact">
                 <div class="wrap">
                     <span class="contact-status online"></span>
@@ -36,17 +37,10 @@
                     </div>
                 </div>
             </li>
-            <li class="contact active">
-                <div class="wrap">
-                    <span class="contact-status busy"></span>
-                    <img src="http://emilcarlsson.se/assets/harveyspecter.png" alt="" />
-                    <div class="meta">
-                        <p class="name">Harvey Specter</p>
-                        <p class="preview">Wrong. You take the gun, or you pull out a bigger one. Or, you call
-                            their bluff. Or, you do any one of a hundred and forty six other things.</p>
-                    </div>
-                </div>
-            </li>
+            @empty
+            <p class="text-center">No users found</p>
+            @endforelse
+            
         </ul>
     </div>
   
