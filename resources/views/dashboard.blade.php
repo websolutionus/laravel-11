@@ -10,8 +10,8 @@
                 </div>
             </div>
             <div class="contact-profile">
-                <img src="http://emilcarlsson.se/assets/harveyspecter.png" alt="" />
-                <p>Harvey Specter</p>
+                <img src="{{ asset('default-images/avatar.jpg') }}" alt="" />
+                <p class="contact-name"></p>
                 <div class="social-media">
 
                 </div>
