@@ -1,8 +1,14 @@
 const selectedContact = $('meta[name="selected_contact"]');
 const baseUrl = $('meta[name="base_url"]').attr('content');
+const inbox = $('.messages ul');
+
 
 function toggleLoader() {
     $('.loader').toggleClass('d-none');
+}
+
+function messageTemplate(text, className) {
+    return `<li class="${className}" ><img src="${baseUrl}/default-images/avatar.jpg" alt="" /><p>${text}</p></li>`
 }
 
 function fetchMessages() {
@@ -27,12 +33,18 @@ function fetchMessages() {
 }
 
 function sendMessage() {
+    let messageBox = $('.message-box');
     let contactId = selectedContact.attr('content');
     let formData = $('.message-form').serialize();
     $.ajax({
         method: 'POST',
         url: baseUrl + '/send-message',
         data: formData + '&contact_id=' + contactId,
+        beforeSend: function() {
+            let message = messageBox.val();
+            inbox.append(messageTemplate(message, 'replies'));
+            messageBox.val('');
+        },
         success: function() {},
         error: function(xhr, status, error) {},
     })

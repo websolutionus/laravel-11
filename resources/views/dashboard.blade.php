@@ -28,7 +28,7 @@
                 <form action="" method="post" class="message-form">
                     @csrf
                     <div class="wrap">
-                        <input type="text" placeholder="Write your message..." name="message" />
+                        <input autocomplete="off" type="text" placeholder="Write your message..." name="message" class="message-box" />
                         <button type="submit" class="submit"><i class="fa fa-paper-plane" aria-hidden="true"></i></button>
                     </div>
                 </form>
