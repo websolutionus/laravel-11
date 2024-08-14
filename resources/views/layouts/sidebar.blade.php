@@ -30,10 +30,10 @@
             <li class="contact">
                 <div class="wrap">
                     <span class="contact-status online"></span>
-                    <img src="http://emilcarlsson.se/assets/louislitt.png" alt="" />
+                    <img src="{{ asset('default-images/avatar.jpg') }}" alt="" />
                     <div class="meta">
-                        <p class="name">Louis Litt</p>
-                        <p class="preview">You just got LITT up, Mike.</p>
+                        <p class="name">{{ $user->name }}</p>
+                        <p class="preview">{{ $user->email }}</p>
                     </div>
                 </div>
             </li>
@@ -42,6 +42,13 @@
             @endforelse
             
         </ul>
+    </div>
+
+    <div class="text-center">
+        <form action="{{ route('logout') }}" method="POST">
+            @csrf
+            <button type="submit" class="btn btn-danger">Logout</button>
+        </form>
     </div>
   
 </div>

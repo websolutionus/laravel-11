@@ -1,4 +1,5 @@
 <x-app-layout>
+
     <div id="frame">
         @include('layouts.sidebar')
         <div class="content">
