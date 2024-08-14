@@ -14,9 +14,13 @@ class ChatController extends Controller
 
     function fetchMessages(Request $request) {
        $contact = User::findOrFail($request->contact_id);
-       
+
        return response()->json([
         'contact' => $contact
        ]);
+    }
+
+    function sendMessage(Request $request) {
+       dd($request->all()); 
     }
 }

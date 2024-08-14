@@ -19,5 +19,7 @@ Route::middleware('auth')->group(function () {
 
 /** Message routes */
 Route::get('fetch-messages', [ChatController::class, 'fetchMessages'])->name('fetch-messages');
+Route::post('send-message', [ChatController::class, 'sendMessage'])->name('send-message');
+
 
 require __DIR__.'/auth.php';
