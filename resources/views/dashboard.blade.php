@@ -22,9 +22,7 @@
 
             <div class="messages">
                 <ul>
-                    <x-message class="sent" text="Hello" />
-                    <x-message class="replies" text="Hello, how are you?" />
-                   
+                    {{-- Dynamic content will go here --}}
                 </ul>
             </div>
             <div class="message-input">

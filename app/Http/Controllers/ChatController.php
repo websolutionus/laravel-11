@@ -16,9 +16,13 @@ class ChatController extends Controller
 
     function fetchMessages(Request $request) {
        $contact = User::findOrFail($request->contact_id);
+       $messages = Message::where('form_id', Auth::user()->id)->where('to_id', $request->contact_id)
+         ->orWhere('form_id', $request->contact_id)->where('to_id', Auth::user()->id)
+         ->get();
 
        return response()->json([
-        'contact' => $contact
+        'contact' => $contact,
+        'messages' => $messages
        ]);
     }
 

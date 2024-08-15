@@ -24,6 +24,16 @@ function fetchMessages() {
         },
         success: function(data) {
             setContactInfo(data.contact);
+            // append messages
+            inbox.empty();
+            data.messages.forEach(value => {
+                if(value.form_id == contactId) {
+                    inbox.append(messageTemplate(value.message, 'sent'));
+                }else {
+                    inbox.append(messageTemplate(value.message, 'replies'));
+                }
+            });
+
         },
         error: function(xhr, status, error) {},
         complete: function() {
