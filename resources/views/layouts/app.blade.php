@@ -5,6 +5,7 @@
     <meta charset='UTF-8'>
     <meta name="robots" content="noindex">
     <meta name="selected_contact" content="">
+    <meta name="auth_id" content="{{ auth()->user()?->id }}">
     <meta name="base_url" content="{{ url('/') }}">
 
 

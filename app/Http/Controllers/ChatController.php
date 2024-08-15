@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Events\SendMessageEvent;
 use App\Models\Message;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -37,6 +38,8 @@ class ChatController extends Controller
        $message->to_id  = $request->contact_id;
        $message->message = $request->message;
        $message->save();
+
+       event(new SendMessageEvent($message->message, $request->contact_id));
 
        return response($message);
     }
