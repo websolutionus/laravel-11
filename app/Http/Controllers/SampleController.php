@@ -6,16 +6,12 @@ use Illuminate\Http\Request;
 
 class SampleController extends Controller
 {
-    public $request;
-    function __construct(Request $request) {
-        return $this->request = $request;
-    }
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-       return [1, 2, 3, 4, $this->request->id]; 
+       
     }
 
     /**
