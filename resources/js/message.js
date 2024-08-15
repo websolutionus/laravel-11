@@ -35,6 +35,8 @@ function fetchMessages() {
                 }
             });
 
+            scrollToBottom();
+
         },
         error: function(xhr, status, error) {},
         complete: function() {
@@ -55,6 +57,7 @@ function sendMessage() {
             let message = messageBox.val();
             inbox.append(messageTemplate(message, 'replies'));
             messageBox.val('');
+            scrollToBottom();
         },
         success: function() {},
         error: function(xhr, status, error) {},
@@ -63,6 +66,12 @@ function sendMessage() {
 
 function setContactInfo(contact) {
     $('.contact-name').text(contact.name);
+}
+
+function scrollToBottom() {
+    $('.messages').stop().animate({
+        scrollTop: $('.messages')[0].scrollHeight
+    });
 }
 
 $(document).ready(function () {
@@ -90,5 +99,6 @@ window.Echo.private('message.' + authId)
     .listen('SendMessageEvent', (e) => {
         if(e.from_id == selectedContact.attr('content')) {
             inbox.append(messageTemplate(e.text, 'sent'));
+            scrollToBottom();
         }
     });
