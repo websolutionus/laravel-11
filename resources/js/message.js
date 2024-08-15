@@ -88,5 +88,7 @@ $(document).ready(function () {
 // listen to the live events
 window.Echo.private('message.' + authId)
     .listen('SendMessageEvent', (e) => {
-        console.log(e);
+        if(e.from_id == selectedContact.attr('content')) {
+            inbox.append(messageTemplate(e.text, 'sent'));
+        }
     });
