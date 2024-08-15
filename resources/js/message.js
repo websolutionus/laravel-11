@@ -102,3 +102,29 @@ window.Echo.private('message.' + authId)
             scrollToBottom();
         }
     });
+
+window.Echo.join('online')
+    .here(users => {
+        users.forEach(user => {
+            let element = $(`.contact[data-id="${user.id}"]`);
+            
+            if(element.length > 0) {
+                element.find('.contact-status').removeClass('offline');
+                element.find('.contact-status').addClass('online');
+            }else {
+                element.find('.contact-status').removeClass('online');
+                element.find('.contact-status').addClass('offline');
+            }
+        })
+
+    })
+    .joining(user => {
+        let element = $(`.contact[data-id="${user.id}"]`);
+        element.find('.contact-status').removeClass('offline');
+        element.find('.contact-status').addClass('online');
+    })
+    .leaving(user => {
+       let element = $(`.contact[data-id="${user.id}"]`);
+       element.find('.contact-status').removeClass('online');
+       element.find('.contact-status').addClass('offline');
+    })
