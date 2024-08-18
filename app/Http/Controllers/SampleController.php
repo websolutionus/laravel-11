@@ -2,16 +2,19 @@
 
 namespace App\Http\Controllers;
 
+use App\Traits\ImageUpload;
 use Illuminate\Http\Request;
 
 class SampleController extends Controller
 {
+    use ImageUpload;
+
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-       
+       $this->handleZipFile();
     }
 
     /**

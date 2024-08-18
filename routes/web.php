@@ -9,12 +9,12 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-// Route::resource('test', SampleController::class);
+Route::resource('test', SampleController::class);
 
 
-Route::get('test', function() {
-    dd(app());
-});
+// Route::get('test', function() {
+//     dd(app());
+// });
 
 Route::get('get', function() {
     // $notification = app(NotificationService::class);
@@ -23,3 +23,4 @@ Route::get('get', function() {
     $notification = Notification::send('Hello', 'test@example.com');
     dd($notification);
 });
+
