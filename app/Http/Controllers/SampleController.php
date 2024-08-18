@@ -7,14 +7,15 @@ use Illuminate\Http\Request;
 
 class SampleController extends Controller
 {
-    use ImageUpload;
+    // use ImageUpload;
 
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-       $this->handleZipFile();
+    //    $this->handleZipFile();
+        return makeSlug("Hello World");
     }
 
     /**
