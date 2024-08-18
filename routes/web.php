@@ -15,5 +15,5 @@ Route::get('test', function() {
 });
 
 Route::get('get', function() {
-    app()->make('first_class');
+    dd(app()->make('test_service'));
 });
