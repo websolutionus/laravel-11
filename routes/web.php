@@ -1,6 +1,7 @@
 <?php
 
 use App\Facades\Notification;
+use App\Http\Controllers\ProductController;
 use App\Http\Controllers\SampleController;
 use App\Services\NotificationService;
 use Illuminate\Support\Facades\Route;
@@ -24,3 +25,4 @@ Route::get('get', function() {
     dd($notification);
 });
 
+Route::resource('products', ProductController::class);
