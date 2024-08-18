@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\SampleController;
+use App\Services\NotificationService;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -15,5 +16,6 @@ Route::get('test', function() {
 });
 
 Route::get('get', function() {
-    dd(app()->make('test_service'));
+    $notification = app(NotificationService::class);
+    dd($notification->send('Hello', 'test@example.com'));
 });
