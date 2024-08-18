@@ -3,6 +3,7 @@
 namespace App\Providers;
 
 use App\Services\NotificationService;
+use Illuminate\Support\Facades\Facade;
 use Illuminate\Support\ServiceProvider;
 
 class NotifactionServiceProvider extends ServiceProvider
@@ -22,6 +23,7 @@ class NotifactionServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        //
+        // Facade::class_alias(NotificationService::class, 'Notification');
+        $this->app->alias(NotificationService::class, 'Notification');
     }
 }
