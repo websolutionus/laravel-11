@@ -22,4 +22,14 @@ class BlogController extends Controller
         $post->save();
         return response()->json($post, 201);
     }
+
+    function update(Request $request, $id) {
+        
+        $post = Blog::findOrFail($id);
+        $post->title = $request->title;
+        $post->description = $request->description;
+        $post->author_id = $request->author_id;
+        $post->save();
+        return response()->json(['message' => 'Updated Successfully'], 200);
+    }
 }
