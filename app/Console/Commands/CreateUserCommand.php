@@ -12,7 +12,7 @@ class CreateUserCommand extends Command
      *
      * @var string
      */
-    protected $signature = 'user:create';
+    protected $signature = 'user:create {--count=}';
 
     /**
      * The console command description.
@@ -26,14 +26,23 @@ class CreateUserCommand extends Command
      */
     public function handle()
     {
-        $user = $this->ask('Give your User Name: ');
-        $email = $this->ask('Give your User Email: ');
-        $password = $this->ask('Give your User Password: ');
-        User::create([
-            'name' => $user,
-            'email' => $email,
-            'password' => bcrypt($password),
-        ]);
-        $this->info('User created: Name: '. $user . ' Email: '. $email . ' Password: ' . $password);
+        $count = $this->option('count');
+        $bar = $this->output->createProgressBar($count);
+        $bar->start();
+        for ($i = 1; $i <= $count; $i++) {
+            $user = \Str::random(5);
+            $email = \Str::random(5).'@example.com';
+            $password = 'password';
+            User::create([
+                'name' => $user,
+                'email' => $email,
+                'password' => bcrypt($password),
+            ]);
+            $bar->advance();
+        }
+        $bar->finish();
+
+        $this->info("\nUsers created successfully!");
+        
     }
 }
