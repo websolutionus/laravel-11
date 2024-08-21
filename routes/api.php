@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Api\V1\BlogController;
+use App\Http\Controllers\Api\V1\TestController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -17,4 +18,6 @@ Route::group(['prefix' => 'v1'], function(){
     Route::put('/blogs/{id}', [BlogController::class, 'update']);
     Route::get('/blogs/{id}', [BlogController::class, 'show']);
     Route::delete('/blogs/{id}', [BlogController::class, 'destroy']);
+
+    Route::apiResource('/tests', TestController::class);
 });
