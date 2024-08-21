@@ -14,6 +14,15 @@ class BlogController extends Controller
         return response()->json($posts, 200);
     }
 
+    function search(Request $request) {
+       if($request->has('q'))  {
+        $posts = Blog::where('title', 'like', '%'. $request->q . '%')->get();
+        return response()->json($posts, 200);
+       }
+
+       return response()->json([], 200);
+    }
+
     function store(BlogStoreRequest $request) {
         $post = new Blog();
         $post->title = $request->title;
