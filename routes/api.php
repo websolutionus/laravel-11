@@ -14,5 +14,5 @@ Route::group(['prefix' => 'v1'], function(){
     Route::post('/blogs', [BlogController::class, 'store']);
     Route::put('/blogs/{id}', [BlogController::class, 'update']);
     Route::get('/blogs/{id}', [BlogController::class, 'show']);
-
+    Route::delete('/blogs/{id}', [BlogController::class, 'destroy']);
 });

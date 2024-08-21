@@ -37,4 +37,11 @@ class BlogController extends Controller
         $post->save();
         return response()->json(['message' => 'Updated Successfully'], 200);
     }
+
+    function destroy($id) {
+       $post = Blog::findOrFail($id);
+       $post->delete();
+       
+       return response()->json(['message' => 'Deleted Successfully'], 200);
+    }
 }
