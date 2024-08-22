@@ -3,8 +3,11 @@
         <div class="pin_icon">
             <img src="images/pin_icons.png" alt="pin" class="img-fluid">
         </div>
-        <input type="text" placeholder="Title">
-        <textarea rows="4" placeholder="Note" id="editorjs"></textarea>
+        <form action="{{ route('notes.store') }}" method="POST" class="create-note">
+        @csrf
+        <input type="text" placeholder="Title" name="title">
+        <textarea rows="4" placeholder="Note" id="editorjs" name="content"></textarea>
+        </form>
         <div class="ions_area">
             <ul>
                 <li>
@@ -51,7 +54,7 @@
                     </ul>
                 </li>
             </ul>
-            <a class="cancel_modal" href="#">cancel</a>
+            <a class="" href="javascript:;" onclick="$('.create-note').submit()">Save</a>
         </div>
     </div>
 </div>
