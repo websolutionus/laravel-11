@@ -1,6 +1,7 @@
 
 const csrf_token = $('meta[name="csrf_token"]').attr('content');
 const base_url = $('meta[name="base_url"]').attr('content');
+const noteCreateId = $('.note_create_id').attr('data-id');
 const noteTitle = $('.note_title');
 const noteContent = $('.note_content');
 
@@ -25,6 +26,7 @@ function handleNote() {
         url: `${base_url}/notes`,
         data: {
             _token: csrf_token,
+            id: noteCreateId,
             note_title: noteTitleVal,
             note_content: noteContentVal
         },

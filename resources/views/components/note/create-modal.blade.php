@@ -1,4 +1,4 @@
-<div class="custom_modal_area">
+<div class="custom_modal_area note_create_id" data-id="{{ $createId }}">
     <div class="custom_modal_content">
         <div class="pin_icon">
             <img src="images/pin_icons.png" alt="pin" class="img-fluid">
