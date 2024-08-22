@@ -39,4 +39,11 @@ function handleNote() {
 $(document).ready(function() {
     noteTitle.on('input', debounce(handleNote, 400));
     noteContent.on('input', debounce(handleNote, 400));
+
+    $('.note_create_modal').on('click', function() {
+        window.location.reload();
+    });
+    $('.note_create_inner').on('click', function(e) {
+        e.stopPropagation();
+    });
 });

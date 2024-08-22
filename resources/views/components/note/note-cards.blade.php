@@ -1,20 +1,20 @@
-<div class="custom_modal_area note_create_modal note_create_id" data-id="{{ $createId }}">
-    <div class="custom_modal_content note_create_inner">
-        <div class="pin_icon">
-            <img src="images/pin_icons.png" alt="pin" class="img-fluid">
+@foreach ($notes as $note)
+<div class="col-xxl-3 col-md-6 col-xl-4">
+    <div class="single_note">
+        <a class="single_note_check" href="#"><i class="far fa-check"></i></a>
+        <div class="single_note_content">
+            <h2>{{ $note->title }}</h2>
+            <p>{!! $note->content !!}</p>
         </div>
-        <form action="{{ route('notes.store') }}" method="POST" class="create-note">
-        @csrf
-        <input type="text" placeholder="Title" name="title">
-        <textarea rows="4" placeholder="Note" id="editorjs" name="content"></textarea>
-        </form>
+
         <div class="ions_area">
             <ul>
                 <li>
                     <a class="modal_drop_theme"><i class="far fa-palette"></i></a>
                     <div class="theme_area">
                         <ul class="theme_color">
-                            <li><a class="white active" href="#"><i class="far fa-tint-slash"></i></a></li>
+                            <li><a class="white active" href="#"><i class="far fa-tint-slash"></i></a>
+                            </li>
                             <li><a class="red" href="#"></a></li>
                             <li><a class="blue" href="#"></a></li>
                             <li><a class="yellow" href="#"></a></li>
@@ -54,7 +54,8 @@
                     </ul>
                 </li>
             </ul>
-            <a class="" href="javascript:;" onclick="$('.create-note').submit()">Save</a>
+            <!-- <a class="cancel_modal" href="#">cancel</a> -->
         </div>
     </div>
 </div>
+@endforeach
