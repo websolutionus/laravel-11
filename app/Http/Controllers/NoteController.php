@@ -103,11 +103,33 @@ class NoteController extends Controller
         return redirect()->back();
     }
 
+    function trash() {
+        $notes = Note::where('user_id', auth()->user()->id)
+        ->onlyTrashed()->latest()->get();
+       return view('trash-bin', compact('notes'));
+    }
+
+    function trashRestore($id) {
+        $note = Note::where('user_id', auth()->user()->id)
+            ->onlyTrashed()
+            ->where('id', $id)
+            ->firstOrFail();
+        $note->restore();
+        return redirect()->back();
+    }
+
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(Request $request,string $id)
     {
-        //
+
+        $note = Note::withTrashed()->findOrFail($id);
+        if($request->permanent_delete == 0) {
+            $note->delete();
+        }else {
+            $note->forceDelete();   
+        }
+        return redirect()->back();
     }
 }

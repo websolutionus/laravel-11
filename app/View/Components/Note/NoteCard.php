@@ -11,7 +11,7 @@ class NoteCard extends Component
     /**
      * Create a new component instance.
      */
-    public function __construct(public $notes)
+    public function __construct(public $notes, public $trash = false)
     {
         //
     }

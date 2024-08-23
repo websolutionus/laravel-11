@@ -41,12 +41,16 @@
                 <li>
                     <a class="modal_drop_list"><i class="far fa-ellipsis-v"></i></a>
                     <ul class="drop_list">
-                        <li><a href="#">delete note</a></li>
-                        <li><a href="#">add label</a></li>
-                        <li><a href="#">add drawing</a></li>
-                        <li><a href="#">make a copy</a></li>
-                        <li><a href="#">vision history</a></li>
+                        <li><a href="javascript:;" onclick="$('.delete-note-{{ $note->id }}').submit()">delete note</a></li>
+                        @if($trash == true)
+                        <li><a href="{{ route('notes.trash-restore', $note->id) }}" >restore</a></li>
+                        @endif
                     </ul>
+                    <form class="delete-note-{{ $note->id }}" action="{{ route('notes.destroy', $note->id) }}" method="POST">
+                        @method('DELETE')
+                        @csrf
+                        <input type="hidden" name="permanent_delete" value="{{ $trash ? 1 : 0 }}">
+                    </form>
                 </li>
             </ul>
             <!-- <a class="cancel_modal" href="#">cancel</a> -->
