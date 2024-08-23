@@ -10,7 +10,7 @@
         <a class="single_note_check" href="#"><i class="far fa-check"></i></a>
         <div class="single_note_content" data-modal="modal_{{ $note->id }}">
             <h2>{{ $note->title }}</h2>
-            <p>{{ $note->content }}</p>
+            <p>{{ Str::limit($note->content, 350) }}</p>
         </div>
 
         <div class="ions_area">
