@@ -14,7 +14,15 @@ class NoteController extends Controller
     public function index()
     {
         $notes = Note::where('user_id', auth()->user()->id)
-            ->where('archived', 0)->latest()->get();
+            ->where('archived', 0)
+            ->when(request()->has('search') && request()->filled('search'), function ($query) {
+                $search = request('search');
+                $query->where(function ($q) use ($search) {
+                    $q->where('title', 'like', '%' . $search . '%')
+                        ->orWhere('content', 'like', '%' . $search . '%');
+                });
+            })
+            ->latest()->get();
         return view('dashboard', compact('notes'));
     }
 
@@ -32,10 +40,18 @@ class NoteController extends Controller
         return response()->json(['message' => 'success'], 200);
     }
 
-    function archived()  {
-        $notes = Note::where('user_id', auth()->user()->id)
-        ->where('archived', 1)->latest()->get();
-       return view('archived', compact('notes')); 
+    function archived()
+    {
+        $notes = Note::where('archived', 1)->where('user_id', auth()->user()->id)
+            ->when(request()->has('search') && request()->filled('search'), function ($query) {
+                $search = request('search');
+                $query->where(function ($q) use ($search) {
+                    $q->where('title', 'like', '%' . $search . '%')
+                        ->orWhere('content', 'like', '%' . $search . '%');
+                });
+            })
+            ->latest()->get();
+        return view('archived', compact('notes'));
     }
 
     function putArchived($id)
@@ -48,14 +64,6 @@ class NoteController extends Controller
         ]);
 
         return redirect()->back();
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
-    {
-        //
     }
 
     /**
@@ -73,22 +81,6 @@ class NoteController extends Controller
     }
 
     /**
-     * Display the specified resource.
-     */
-    public function show(string $id)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(string $id)
-    {
-        //
-    }
-
-    /**
      * Update the specified resource in storage.
      */
     public function update(Request $request, string $id)
@@ -103,13 +95,22 @@ class NoteController extends Controller
         return redirect()->back();
     }
 
-    function trash() {
+    function trash()
+    {
         $notes = Note::where('user_id', auth()->user()->id)
-        ->onlyTrashed()->latest()->get();
-       return view('trash-bin', compact('notes'));
+            ->when(request()->has('search') && request()->filled('search'), function ($query) {
+                $search = request('search');
+                $query->where(function ($q) use ($search) {
+                    $q->where('title', 'like', '%' . $search . '%')
+                        ->orWhere('content', 'like', '%' . $search . '%');
+                });
+            })
+            ->onlyTrashed()->latest()->get();
+        return view('trash-bin', compact('notes'));
     }
 
-    function trashRestore($id) {
+    function trashRestore($id)
+    {
         $note = Note::where('user_id', auth()->user()->id)
             ->onlyTrashed()
             ->where('id', $id)
@@ -121,14 +122,14 @@ class NoteController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Request $request,string $id)
+    public function destroy(Request $request, string $id)
     {
 
         $note = Note::withTrashed()->findOrFail($id);
-        if($request->permanent_delete == 0) {
+        if ($request->permanent_delete == 0) {
             $note->delete();
-        }else {
-            $note->forceDelete();   
+        } else {
+            $note->forceDelete();
         }
         return redirect()->back();
     }
