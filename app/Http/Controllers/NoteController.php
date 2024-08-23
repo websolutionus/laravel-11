@@ -44,7 +44,7 @@ class NoteController extends Controller
             ->where('id', $id)
             ->first();
         $note->update([
-            'archived' => 1
+            'archived' => $note->archived == 1 ? 0 : 1
         ]);
 
         return redirect()->back();

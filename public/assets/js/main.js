@@ -117,7 +117,7 @@ $(function () {
 });
 
 function openModal() {
-    $(".custom_modal_area").addClass("show_modal");
+    $(".create_note_modal").addClass("show_modal");
     $(".drop_menu_user").removeClass("show_setting");
     $(".drop_menu_setting").removeClass("show_setting");
     $(".theme_area").removeClass("show_drop_theme");
