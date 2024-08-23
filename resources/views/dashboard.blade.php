@@ -8,7 +8,7 @@
         <i class="far fa-plus"></i>
     </div>
 
-    <x-note.create-modal :createId="$createId" />
+    <x-note.create-modal/>
 
     <div class="row">
     <x-note.note-card :notes="$notes" />
