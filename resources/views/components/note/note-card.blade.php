@@ -1,6 +1,12 @@
 @foreach($notes as $note)
 <div class="col-xxl-3 col-md-6 col-xl-4">
-    <div class="single_note" {{ $note->color_name ? "style=background:{$note->color_name}" : '' }}>
+    <div class="single_note"
+        @if($note->appearance_type == 'color')
+        style="background:{{ $note->color_name }}"
+        @else
+        style="background-image:url('{{asset($note->image_path)}}')"
+        @endif
+        >
         <a class="single_note_check" href="#"><i class="far fa-check"></i></a>
         <div class="single_note_content" data-modal="modal_{{ $note->id }}">
             <h2>{{ $note->title }}</h2>
@@ -22,14 +28,10 @@
                         </ul>
                         <ul class="theme_img">
                             <li><a class="img_1 close active" href="#"></a></li>
-                            <li><a class="img_2" href="#"></a></li>
-                            <li><a class="img_3" href="#"></a></li>
-                            <li><a class="img_4" href="#"></a></li>
-                            <li><a class="img_5" href="#"></a></li>
-                            <li><a class="img_6" href="#"></a></li>
-                            <li><a class="img_4" href="#"></a></li>
-                            <li><a class="img_5" href="#"></a></li>
-                            <li><a class="img_6" href="#"></a></li>
+                            @foreach(config('appearance.images') as $image)
+                            <li class="appearance" data-image="{{ $image }}" data-type="image" data-id="{{ $note->id }}" ><a style="background: url('{{ asset($image) }}')" class="img_2" href="#"></a></li>
+                            @endforeach
+            
                         </ul>
                     </div>
                 </li>
@@ -52,7 +54,13 @@
     </div>
 </div>
 <div class="custom_modal_area" data-modal="modal_{{ $note->id }}">
-    <div class="custom_modal_content">
+    <div class="custom_modal_content"
+    @if($note->appearance_type == 'color')
+        style="background:{{ $note->color_name }}"
+        @else
+        style="background-image:url('{{asset($note->image_path)}}')"
+        @endif
+    >
         <div class="pin_icon">
             <img src="images/pin_icons.png" alt="pin" class="img-fluid">
         </div>
