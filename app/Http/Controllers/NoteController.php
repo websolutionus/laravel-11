@@ -13,21 +13,41 @@ class NoteController extends Controller
      */
     public function index()
     {
-        $notes = Note::where('user_id', auth()->user()->id)->latest()->get();
+        $notes = Note::where('user_id', auth()->user()->id)
+            ->where('archived', 0)->latest()->get();
         return view('dashboard', compact('notes'));
     }
 
-    function changeAppearance(Request $request) {
-       $note = Note::where('user_id', auth()->user()->id)
-       ->where('id', $request->id)
-       ->first();
-       $note->update([
-           'color_name' => $request->color,
-           'appearance_type' => $request->type,
-           'image_path' => $request->image
-       ]);
+    function changeAppearance(Request $request)
+    {
+        $note = Note::where('user_id', auth()->user()->id)
+            ->where('id', $request->id)
+            ->first();
+        $note->update([
+            'color_name' => $request->color,
+            'appearance_type' => $request->type,
+            'image_path' => $request->image
+        ]);
 
-       return response()->json(['message' => 'success'], 200);
+        return response()->json(['message' => 'success'], 200);
+    }
+
+    function archived()  {
+        $notes = Note::where('user_id', auth()->user()->id)
+        ->where('archived', 1)->latest()->get();
+       return view('archived', compact('notes')); 
+    }
+
+    function putArchived($id)
+    {
+        $note = Note::where('user_id', auth()->user()->id)
+            ->where('id', $id)
+            ->first();
+        $note->update([
+            'archived' => 1
+        ]);
+
+        return redirect()->back();
     }
 
     /**

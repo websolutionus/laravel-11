@@ -36,7 +36,7 @@
                     </div>
                 </li>
                 <li>
-                    <a href="#"><i class="far fa-box-alt"></i></a>
+                    <a href="{{ route('notes.put-archived', $note->id) }}"><i class="far fa-box-alt"></i></a>
                 </li>
                 <li>
                     <a class="modal_drop_list"><i class="far fa-ellipsis-v"></i></a>

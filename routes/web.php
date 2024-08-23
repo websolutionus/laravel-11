@@ -17,6 +17,8 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 
     Route::post('/notes/appearance', [NoteController::class, 'changeAppearance'])->name('notes.appearance');
+    Route::get('/notes/put-archived/{id}', [NoteController::class, 'putArchived'])->name('notes.put-archived');
+    Route::get('/notes/archived', [NoteController::class, 'archived'])->name('notes.archived');
     Route::resource('notes', NoteController::class);
 });
 require __DIR__.'/auth.php';

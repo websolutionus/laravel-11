@@ -9,5 +9,5 @@ class Note extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['title', 'content', 'user_id', 'color_name', 'appearance_type', 'image_path'];
+    protected $fillable = ['title', 'content', 'user_id', 'color_name', 'appearance_type', 'image_path', 'archived'];
 }
