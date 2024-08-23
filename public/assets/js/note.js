@@ -1,49 +1,28 @@
-
 const csrf_token = $('meta[name="csrf_token"]').attr('content');
 const base_url = $('meta[name="base_url"]').attr('content');
-const noteCreateId = $('.note_create_id').attr('data-id');
-const noteTitle = $('.note_title');
-const noteContent = $('.note_content');
 
+function setAppearance(element) {
 
-/** Reusable functions */
-
-function debounce(func, delay) { // 300ms
-    let timeout;
-    return (...args) => {
-        clearTimeout(timeout);
-        timeout = setTimeout(() => func(...args), delay);
-    }
-}
-
-
-function handleNote() {
-    let noteTitleVal = noteTitle.val();
-    let noteContentVal = noteContent.val();
-    console.log(noteTitleVal);
+    let color = element.attr('data-color');
+    let type = element.attr('data-type');
+    let id = element.attr('data-id');
     $.ajax({
         method: 'POST',
-        url: `${base_url}/notes`,
+        url: base_url + '/notes/appearance',
         data: {
             _token: csrf_token,
-            id: noteCreateId,
-            note_title: noteTitleVal,
-            note_content: noteContentVal
+            color: color,
+            type: type,
+            id: id
         },
-        success: function() {},
-        error: function(xhr, status, error) {},
+        success: function (data) {},
+        error: function(xhr, status, error) {}
     });
 }
 
-
 $(document).ready(function() {
-    noteTitle.on('input', debounce(handleNote, 400));
-    noteContent.on('input', debounce(handleNote, 400));
-
-    $('.note_create_modal').on('click', function() {
-        window.location.reload();
-    });
-    $('.note_create_inner').on('click', function(e) {
-        e.stopPropagation();
-    });
+    $('.appearance').on('click', function() {
+        $(this).closest('.single_note').css('background', $(this).attr('data-color'));
+        setAppearance($(this));
+    })
 });

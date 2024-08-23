@@ -17,6 +17,18 @@ class NoteController extends Controller
         return view('dashboard', compact('notes'));
     }
 
+    function changeAppearance(Request $request) {
+       $note = Note::where('user_id', auth()->user()->id)
+       ->where('id', $request->id)
+       ->first();
+       $note->update([
+           'color_name' => $request->color,
+           'appearance_type' => $request->type,
+       ]);
+
+       return response()->json(['message' => 'success'], 200);
+    }
+
     /**
      * Show the form for creating a new resource.
      */

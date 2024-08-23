@@ -1,6 +1,6 @@
 @foreach($notes as $note)
 <div class="col-xxl-3 col-md-6 col-xl-4">
-    <div class="single_note">
+    <div class="single_note" {{ $note->color_name ? "style=background:{$note->color_name}" : '' }}>
         <a class="single_note_check" href="#"><i class="far fa-check"></i></a>
         <div class="single_note_content" data-modal="modal_{{ $note->id }}">
             <h2>{{ $note->title }}</h2>
@@ -15,17 +15,10 @@
                         <ul class="theme_color">
                             <li><a class="white active" href="#"><i class="far fa-tint-slash"></i></a>
                             </li>
-                            <li><a class="red" href="#"></a></li>
-                            <li><a class="blue" href="#"></a></li>
-                            <li><a class="yellow" href="#"></a></li>
-                            <li><a class="green" href="#"></a></li>
-                            <li><a class="purple" href="#"></a></li>
-                            <li><a class="orange" href="#"></a></li>
-                            <li><a class="red" href="#"></a></li>
-                            <li><a class="blue" href="#"></a></li>
-                            <li><a class="yellow" href="#"></a></li>
-                            <li><a class="green" href="#"></a></li>
-                            <li><a class="purple" href="#"></a></li>
+                            @foreach(config('appearance.colors') as $color)
+                            <li class="appearance" data-color="{{ $color }}" data-type="color" data-id="{{ $note->id }}"><a class="red" style="background: {{ $color }}" href="javascript:;"></a></li>
+                            @endforeach
+                            
                         </ul>
                         <ul class="theme_img">
                             <li><a class="img_1 close active" href="#"></a></li>

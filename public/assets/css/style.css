@@ -589,6 +589,7 @@ header .header_right li .drop_menu.show_setting {
 
 .theme_area .theme_color li .red {
     background: red;
+    border: 1px solid #ddd;
 }
 
 .theme_area .theme_color li .blue {
