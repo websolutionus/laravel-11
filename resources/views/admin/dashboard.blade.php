@@ -27,7 +27,7 @@
                             <td>{{ $product->name }}</td>
                             <td>{{ $product->price }}</td>
                             <td>{{ $product->qty }}</td>
-                            <td class="d-flex">
+                            <td class="d-flex border-0">
                               <a href="{{ route('product.edit', $product->id) }}" class="btn btn-primary">edit</a>
                               <form action="{{ route('product.destroy', $product->id) }}" method="POST">
                                 @csrf
