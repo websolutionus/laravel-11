@@ -105,6 +105,7 @@ window.Echo.private('message.' + authId)
 
 window.Echo.join('online')
     .here(users => {
+        console.log(users);
         users.forEach(user => {
             let element = $(`.contact[data-id="${user.id}"]`);
             
